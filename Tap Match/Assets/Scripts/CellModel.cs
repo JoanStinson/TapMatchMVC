@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace JGM.Game
 {
@@ -36,6 +37,11 @@ namespace JGM.Game
         {
             //m_coordinate.Reset();
             m_color = Color.gray;
+        }
+
+        internal bool IsEmpty()
+        {
+            return m_color == Color.gray;
         }
     }
 }

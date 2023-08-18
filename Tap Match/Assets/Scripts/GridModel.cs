@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JGM.Game
@@ -42,5 +43,96 @@ namespace JGM.Game
         {
             return m_grid[i, j];
         }
+
+        public void CascadeAndShiftCells()
+        {
+            List<int> columnsToShift = new List<int>(); // Keep track of columns to shift
+
+            // Loop through each column
+            for (int col = 0; col < cols; col++)
+            {
+                List<CellModel> nonEmptyCells = new List<CellModel>();
+
+                // Loop through each row in reverse order to find non-empty cells
+                for (int row = rows - 1; row >= 0; row--)
+                {
+                    var cell = GetCell(row, col);
+                    if (!cell.IsEmpty())
+                    {
+                        nonEmptyCells.Add(cell);
+                    }
+                }
+
+                // If there are non-empty cells, move them to the bottom of the column
+                if (nonEmptyCells.Count > 0)
+                {
+                    int rowIndex = rows - 1;
+
+                    // Loop through each non-empty cell and move it to the bottom
+                    foreach (var cell in nonEmptyCells)
+                    {
+                        SetCell(new Coordinate(rowIndex, col), cell.color);
+                        rowIndex--;
+                    }
+
+                    // Empty remaining cells at the top
+                    while (rowIndex >= 0)
+                    {
+                        EmptyCell(new Coordinate(rowIndex, col));
+                        rowIndex--;
+                    }
+
+                    if (rowIndex < rows - 1) // Check if any shifting was performed
+                    {
+                        columnsToShift.Add(col); // Store the column index for shifting
+                    }
+                }
+            }
+
+            // Call ShiftCells for each column that needs shifting
+            foreach (int colToShift in columnsToShift)
+            {
+                ShiftCells(colToShift);
+            }
+        }
+
+        public void ShiftCells(int col)
+        {
+            List<CellModel> nonEmptyCells = new List<CellModel>();
+
+            // Loop through each row in reverse order to find non-empty cells
+            for (int row = rows - 1; row >= 0; row--)
+            {
+                var cell = GetCell(row, col);
+                if (!cell.IsEmpty())
+                {
+                    nonEmptyCells.Add(cell);
+                }
+            }
+
+            // Move non-empty cells to the bottom of the column
+            if (nonEmptyCells.Count > 0)
+            {
+                int rowIndex = rows - 1;
+
+                // Loop through each non-empty cell and move it to the bottom
+                foreach (var cell in nonEmptyCells)
+                {
+                    SetCell(new Coordinate(rowIndex, col), cell.color);
+                    rowIndex--;
+                }
+
+                // Empty remaining cells at the top
+                while (rowIndex >= 0)
+                {
+                    EmptyCell(new Coordinate(rowIndex, col));
+                    rowIndex--;
+                }
+            }
+        }
+
+
+
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,10 +20,10 @@ namespace JGM.Game
         {
             m_controller = new GameController();
 
-            for (int i = 0; i < m_grid.transform.childCount; i++)
-            {
-                Destroy(m_grid.transform.GetChild(i).gameObject);
-            }
+            //for (int i = 0; i < m_grid.transform.childCount; i++)
+            //{
+            //    Destroy(m_grid.transform.GetChild(i).gameObject);
+            //}
 
             m_cells = new List<CellView>();
             m_gridModel = m_controller.BuildGridModel(gameSettings);
@@ -29,7 +31,9 @@ namespace JGM.Game
             {
                 for (int j = 0; j < m_gridModel.cols; j++)
                 {
-                    var go = Instantiate(m_cellViewPrefab, m_grid.transform, false);
+                    var go = Instantiate(m_cellViewPrefab);
+                    var transformParent = m_grid.transform.GetChild(i * m_gridModel.cols + j);
+                    go.transform.SetParent(transformParent, false);
                     var cellModel = m_gridModel.GetCell(i, j);
                     go.Initialize(cellModel, OnClickCell);
                     m_cells.Add(go);
@@ -37,7 +41,7 @@ namespace JGM.Game
             }
         }
 
-        private void OnClickCell(CellModel cellModel)
+        private async void OnClickCell(CellModel cellModel)
         {
             var connectedCells = new List<Coordinate>();
             var targetCoordinate = cellModel.coordinate;
@@ -52,23 +56,47 @@ namespace JGM.Game
 
             foreach (var connectedCoordinate in connectedCells)
             {
-                CellView cellView = null;
-                foreach (var item in m_cells)
+                CellView cellView = m_cells.Find(view => view.model.coordinate == connectedCoordinate);
+                if (cellView != null)
                 {
-                    if (connectedCoordinate == item.model.coordinate)
-                    {
-                        //m_cells.Remove(item);
-                        cellView = item;
-                        //m_gridModel
-                        //Destroy(item.gameObject);
-                        break;
-                    }
+                    m_gridModel.EmptyCell(connectedCoordinate);
+                    m_cells.Remove(cellView);
+                    Destroy(cellView.gameObject);
                 }
 
-                cellView?.Initialize(m_gridModel.EmptyCell(connectedCoordinate), OnClickCell);
                 connectedCoordinate.IsVisited = false;
             }
+
+            m_gridModel.CascadeAndShiftCells();
+
+            // Destroy existing cell views and clear the list
+            foreach (var cellView in m_cells)
+            {
+                Destroy(cellView.gameObject);
+            }
+            m_cells.Clear();
+
+            // Loop through the grid rows and columns to recreate cell views
+            for (int i = 0; i < m_gridModel.rows; i++)
+            {
+                for (int j = 0; j < m_gridModel.cols; j++)
+                {
+                    var cellModel2 = m_gridModel.GetCell(i, j);
+                    if (!cellModel2.IsEmpty())
+                    {
+                        var cellView2 = Instantiate(m_cellViewPrefab);
+                        m_cells.Add(cellView2);
+                        cellView2.Initialize(cellModel2, OnClickCell);
+                        var transformParent = m_grid.transform.GetChild(i * m_gridModel.cols + j);
+                        cellView2.transform.SetParent(transformParent, false);
+
+                        // Set sibling index to the last position in the column
+                        cellView2.transform.SetSiblingIndex(transformParent.childCount - 1);
+                    }
+                }
+            }
         }
+
 
         private void FindConnectedCells(Coordinate coordinate, Color targetColor, List<Coordinate> connectedCells)
         {
