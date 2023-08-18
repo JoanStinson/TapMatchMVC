@@ -67,7 +67,9 @@ namespace JGM.Game
                 connectedCoordinate.IsVisited = false;
             }
 
+            await Task.Delay(TimeSpan.FromSeconds(1));
             m_gridModel.CascadeAndShiftCells();
+            m_controller.FillEmptySlotsAfterCascade(m_gridModel);
 
             // Destroy existing cell views and clear the list
             foreach (var cellView in m_cells)
