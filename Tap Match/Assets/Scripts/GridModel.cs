@@ -30,11 +30,12 @@ namespace JGM.Game
             return m_grid[coordinate.x, coordinate.y];
         }
 
-        public void EmptyCell(Coordinate coordinate)
+        public CellModel EmptyCell(Coordinate coordinate)
         {
             Debug.Assert(coordinate.x >= 0 && coordinate.x <= m_grid.GetLength(0));
             Debug.Assert(coordinate.y >= 0 && coordinate.y <= m_grid.GetLength(1));
             m_grid[coordinate.x, coordinate.y].EmptyCell();
+            return m_grid[coordinate.x, coordinate.y];
         }
 
         internal CellModel GetCell(int i, int j)

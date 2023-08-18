@@ -9,6 +9,8 @@ namespace JGM.Game
 
         public Color color => m_color;
 
+        public Coordinate coordinate => m_coordinate;
+
         public CellModel(Coordinate coordinate, Color color)
         {
             SetCell(coordinate, color);
@@ -32,7 +34,7 @@ namespace JGM.Game
 
         public void EmptyCell()
         {
-            m_coordinate.Reset();
+            //m_coordinate.Reset();
             m_color = Color.gray;
         }
     }

@@ -6,6 +6,7 @@ namespace JGM.Game
     {
         public int x => m_x;
         public int y => m_y;
+        public bool IsVisited { get; set; }
 
         private int m_x = -1;
         private int m_y = -1;
