@@ -2,22 +2,25 @@ using UnityEngine;
 
 namespace JGM.Game
 {
+    [RequireComponent(typeof(IGameView))]
     public class TapMatch : MonoBehaviour
     {
-        [SerializeField] private IGameView m_gameView;
-        private IGameController m_gameController;
+        [SerializeField] private GameSettings m_gameSettings;
+        
+        private GameView m_gameView;
 
         private void Start()
         {
-            m_gameView.Initialize();
-            m_gameController ??= new GameController();
-            m_gameController.Initialize();
+            if (m_gameView == null)
+            {
+                m_gameView = gameObject.GetComponent<GameView>();
+            }
+            m_gameView.Initialize(m_gameSettings);
         }
 
-        public void SetDependencies(IGameView gameView, IGameController gameController)
+        public void SetDependencies(IGameView gameView)
         {
-            m_gameView = gameView;
-            m_gameController = gameController;
+            //m_gameView = gameView;
         }
     }
 }

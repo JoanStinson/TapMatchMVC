@@ -2,6 +2,6 @@
 {
     public interface IGameDependency
     {
-        void Initialize();
+        //void Initialize();
     }
 }

@@ -7,6 +7,8 @@ namespace JGM.Game
         private Coordinate m_coordinate;
         private Color m_color = Color.gray;
 
+        public Color color => m_color;
+
         public CellModel(Coordinate coordinate, Color color)
         {
             SetCell(coordinate, color);
