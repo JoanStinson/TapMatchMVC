@@ -53,37 +53,44 @@ namespace JGM.Game
         }
     }
 
-    public class Coordinate
+    public class CellModel
     {
-        public int X => m_x;
-        public int Y => m_y;
-        public Color Color => m_color;
-        
-        private int m_x;
-        private int m_y;
+        private Coordinate m_coordinate;
         private Color m_color;
 
-        public Coordinate(int x, int y, Color color)
+        public CellModel(Coordinate coordinate, Color color)
         {
-            m_x = x;
-            m_y = y;
+            m_coordinate = coordinate;
             m_color = color;
         }
 
-        public bool IsConnected(Coordinate newCoordinate)
+        public bool IsConnected(CellModel otherCell)
         {
-            if (m_color != newCoordinate.m_color)
+            if (m_color != otherCell.m_color)
             {
                 return false;
             }
 
-            int rowDiff = Math.Abs(m_x - newCoordinate.m_x);
-            int colDiff = Math.Abs(m_y - newCoordinate.m_y);
+            return m_coordinate.IsAdjacent(otherCell.m_coordinate);
+        }
+    }
 
-            bool connectedVertically = (rowDiff == 1 && colDiff == 0);
-            bool connectedHorizontally = (rowDiff == 0 && colDiff == 1);
+    public class Coordinate
+    {
+        private int m_x;
+        private int m_y;
 
-            return connectedVertically || connectedHorizontally;
+        public Coordinate(int x, int y)
+        {
+            m_x = x;
+            m_y = y;
+        }
+
+        public bool IsAdjacent(Coordinate otherCoordinate)
+        {
+            int rowDiff = Math.Abs(m_x - otherCoordinate.m_x);
+            int colDiff = Math.Abs(m_y - otherCoordinate.m_y);
+            return (rowDiff == 1 && colDiff == 0) || (rowDiff == 0 && colDiff == 1);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace JGM.GameTests
         [SetUp]
         public void SetUp()
         {
-            m_coordinate = new Coordinate(1, 1, Color.white);
+            m_coordinate = new Coordinate(1, 1);
         }
 
         /* 0 X 0
@@ -47,18 +47,50 @@ namespace JGM.GameTests
          * 0 X 0
          * Only vertically and horizontally
          */
-        [TestCase(false, 0, 0)]
-        [TestCase(true, 0, 1)]
-        [TestCase(false, 0, 2)]
-        [TestCase(true, 1, 0)]
-        [TestCase(true, 1, 2)]
-        [TestCase(false, 2, 0)]
-        [TestCase(true, 2, 1)]
-        [TestCase(false, 2, 2)]
-        public void When_IsConnectedIsCalled_ReturnsExpectedValue(bool expectedResult, params int[] coordinates)
+        [TestCase(0, 0, false)]
+        [TestCase(0, 1, true)]
+        [TestCase(0, 2, false)]
+        [TestCase(1, 0, true)]
+        [TestCase(1, 2, true)]
+        [TestCase(2, 0, false)]
+        [TestCase(2, 1, true)]
+        [TestCase(2, 2, false)]
+        public void When_IsAdjacentIsCalled_ReturnsExpectedValue(int xCoord, int yCoord, bool expectedResult)
         {
-            var newCoordinate = new Coordinate(coordinates[0], coordinates[1], Color.white);
-            bool actualResult = m_coordinate.IsConnected(newCoordinate);
+            var newCoordinate = new Coordinate(xCoord, yCoord);
+            bool actualResult = m_coordinate.IsAdjacent(newCoordinate);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+    }
+
+    public class CellModelTest
+    {
+        private CellModel m_cellModel;
+
+        [SetUp]
+        public void SetUp()
+        {
+            m_cellModel = new CellModel(new Coordinate(1, 1), Color.white);
+        }
+
+        /* P W P
+         * W W B
+         * P B P
+         * Only vertically and horizontally
+         */
+        [TestCase(0, 0, "pink", false)]
+        [TestCase(0, 1, "white", true)]
+        [TestCase(0, 2, "pink", false)]
+        [TestCase(1, 0, "white", true)]
+        [TestCase(1, 2, "blue", false)]
+        [TestCase(2, 0, "pink", false)]
+        [TestCase(2, 1, "blue", false)]
+        [TestCase(2, 2, "pink", false)]
+        public void When_IsConnectedIsCalled_ReturnsExpectedValue(int xCoord, int yCoord, string colorStr, bool expectedResult)
+        {
+            var color = (colorStr == "white") ? Color.white : Color.red;
+            var newCellModel = new CellModel(new Coordinate(xCoord, yCoord), color);
+            bool actualResult = m_cellModel.IsConnected(newCellModel);
             Assert.AreEqual(expectedResult, actualResult);
         }
     }
