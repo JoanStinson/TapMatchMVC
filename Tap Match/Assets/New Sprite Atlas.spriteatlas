@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 8278e156d24a85540bfb538a7f06bb18, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4de3d300045fa3e4fad1b14cb2164783, type: 3}
+  - {fileID: 21300000, guid: a2668651fe579d94ba4113db436cd015, type: 3}
+  - {fileID: -53843194, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -48214002, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1061985339, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 992253775, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -590620959, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1975315236, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 209304823, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -2050431453, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 521596888, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1947629611, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -1253515794, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -1643681945, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -708756353, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 195859368, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1296674260, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -408984147, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -246655679, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1739291911, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -1348627332, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -213730921, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 2095442070, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -369381437, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -824185151, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1484032126, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1571895161, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -140431987, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -1069708758, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 913702009, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1200362160, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -979711657, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 2060033286, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1051166183, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 983065371, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 622760606, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -452410022, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -1934342649, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -659139118, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -1034799503, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 1576462591, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -660183159, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: 2107587020, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -845039906, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Top UI
+  - Background
+  - Candies_Jerom_CCBYSA3_8
+  - Candies_Jerom_CCBYSA3_9
+  - Candies_Jerom_CCBYSA3_6
+  - Candies_Jerom_CCBYSA3_7
+  - 2_Red
+  - Candies_Jerom_CCBYSA3_17
+  - Candies_Jerom_CCBYSA3_16
+  - Candies_Jerom_CCBYSA3_15
+  - Candies_Jerom_CCBYSA3_14
+  - Candies_Jerom_CCBYSA3_13
+  - Candies_Jerom_CCBYSA3_12
+  - Candies_Jerom_CCBYSA3_28
+  - Candies_Jerom_CCBYSA3_11
+  - Candies_Jerom_CCBYSA3_29
+  - Candies_Jerom_CCBYSA3_10
+  - Candies_Jerom_CCBYSA3_22
+  - Candies_Jerom_CCBYSA3_23
+  - 6_Gray
+  - Candies_Jerom_CCBYSA3_20
+  - Candies_Jerom_CCBYSA3_19
+  - Candies_Jerom_CCBYSA3_21
+  - Candies_Jerom_CCBYSA3_18
+  - Candies_Jerom_CCBYSA3_26
+  - Candies_Jerom_CCBYSA3_27
+  - Candies_Jerom_CCBYSA3_24
+  - Candies_Jerom_CCBYSA3_25
+  - 3_Green
+  - 1_Light Green
+  - 5_Blue
+  - Candies_Jerom_CCBYSA3_40
+  - Candies_Jerom_CCBYSA3_41
+  - Candies_Jerom_CCBYSA3_39
+  - Candies_Jerom_CCBYSA3_38
+  - Candies_Jerom_CCBYSA3_35
+  - Candies_Jerom_CCBYSA3_34
+  - Candies_Jerom_CCBYSA3_37
+  - Candies_Jerom_CCBYSA3_36
+  - Candies_Jerom_CCBYSA3_31
+  - Candies_Jerom_CCBYSA3_30
+  - Candies_Jerom_CCBYSA3_33
+  - Candies_Jerom_CCBYSA3_32
+  - 4_Orange
+  m_RenderDataMap: {}
+  m_Tag: New Sprite Atlas
+  m_IsVariant: 0
