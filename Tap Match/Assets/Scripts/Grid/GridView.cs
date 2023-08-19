@@ -59,8 +59,7 @@ namespace JGM.Game
 
             EmptyConnectedCells(connectedCells);
             await Task.Delay(TimeSpan.FromSeconds(1));
-            m_controller.ShiftCellsDownwardsToFillEmptySlots();
-            m_controller.FillRemainingTopEmptySlotsWithRandomCells();
+            m_controller.ShiftCellsDownwardsAndFillEmptySlots();
             RefreshCellsInGrid();
 
             m_canvasGroup.blocksRaycasts = true;

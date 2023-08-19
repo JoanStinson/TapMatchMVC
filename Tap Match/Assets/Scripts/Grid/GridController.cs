@@ -26,7 +26,7 @@ namespace JGM.Game
             return m_grid;
         }
 
-        public void ShiftCellsDownwardsToFillEmptySlots()
+        public void ShiftCellsDownwardsAndFillEmptySlots()
         {
             var columnsToShift = new List<int>();
 
@@ -71,11 +71,12 @@ namespace JGM.Game
 
             foreach (int columnToShift in columnsToShift)
             {
-                ShiftCells(columnToShift);
+                ShiftCellsDownwardsFromColumn(columnToShift);
+                FillEmptySlotsFromColumn(columnToShift);
             }
         }
 
-        private void ShiftCells(int column)
+        private void ShiftCellsDownwardsFromColumn(int column)
         {
             var filledCells = new List<CellModel>();
 
@@ -109,36 +110,16 @@ namespace JGM.Game
             }
         }
 
-        public void FillRemainingTopEmptySlotsWithRandomCells()
+        private void FillEmptySlotsFromColumn(int column)
         {
-            for (int column = 0; column < m_grid.columns; column++)
+            for (int row = 0; row < m_grid.rows; row++)
             {
-                bool shouldFillColumn = false;
+                int randomIndex = Random.Range(0, m_cellColors.Length);
+                Color color = m_cellColors[randomIndex];
 
-                // Loop through each row in reverse order to check for empty slots
-                for (int row = m_grid.rows - 1; row >= 0; row--)
+                if (m_grid.GetCell(new Coordinate(row, column)).IsEmpty())
                 {
-                    if (m_grid.GetCell(new Coordinate(row, column)).IsEmpty())
-                    {
-                        shouldFillColumn = true;
-                        break;
-                    }
-                }
-
-                // If there are empty slots, fill the column
-                if (shouldFillColumn)
-                {
-                    for (int row = 0; row < m_grid.rows; row++)
-                    {
-                        int randomIndex = Random.Range(0, m_cellColors.Length);
-                        Color color = m_cellColors[randomIndex];
-
-                        // Fill the empty slot with the new random color
-                        if (m_grid.GetCell(new Coordinate(row, column)).IsEmpty())
-                        {
-                            m_grid.SetCell(new Coordinate(row, column), color);
-                        }
-                    }
+                    m_grid.SetCell(new Coordinate(row, column), color);
                 }
             }
         }
