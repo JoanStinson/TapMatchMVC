@@ -1,0 +1,16 @@
+{
+    "name": "JGM.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a71604f3a763d404397f2286de04a48d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
