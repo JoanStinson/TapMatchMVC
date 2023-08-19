@@ -26,7 +26,29 @@ namespace JGM.Game
             return m_grid;
         }
 
-        public void FindConnectedCells(Coordinate coordinate, Color targetColor, List<Coordinate> connectedCells)
+        public bool EmptyConnectedCells(CellModel cell, out List<CellModel> connectedCells)
+        {
+            connectedCells = new List<CellModel>();
+            FindConnectedCells(cell.coordinate, cell.color, connectedCells);
+
+            if (connectedCells.Count > 1)
+            {
+                foreach (var connectedCell in connectedCells)
+                {
+                    connectedCell.EmptyCell();
+                    connectedCell.coordinate.isVisited = false;
+                }
+                return true;
+            }
+
+            if (connectedCells.Count > 0)
+            {
+                connectedCells[0].coordinate.isVisited = false;
+            }
+            return false;
+        }
+
+        private void FindConnectedCells(Coordinate coordinate, Color targetColor, List<CellModel> connectedCells)
         {
             if (coordinate.x < 0 || coordinate.x >= m_grid.rows ||
                 coordinate.y < 0 || coordinate.y >= m_grid.columns)
@@ -42,7 +64,7 @@ namespace JGM.Game
             }
 
             cell.coordinate.isVisited = true;
-            connectedCells.Add(cell.coordinate);
+            connectedCells.Add(cell);
 
             var neighbors = new[]
             {

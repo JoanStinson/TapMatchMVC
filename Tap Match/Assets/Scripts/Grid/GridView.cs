@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace JGM.Game
@@ -16,13 +17,13 @@ namespace JGM.Game
 
         private GridModel m_grid;
         private GridController m_controller;
-        private List<CellView> m_cellViewInstances;
+        private Dictionary<Coordinate, CellView> m_cellViewInstances;
 
         public void Initialize(GridController controller, GameSettings settings)
         {
             m_controller = controller;
             m_grid = m_controller.BuildGrid(settings);
-            m_cellViewInstances = new List<CellView>();
+            m_cellViewInstances = new Dictionary<Coordinate, CellView>();
             InstantiateCellsInsideGrid();
             new DynamicGridLayout().SetupGridLayout(settings, m_gridLayoutGroup, m_contentSizeFitter);
         }
@@ -39,7 +40,7 @@ namespace JGM.Game
                     cellViewInstance.transform.SetParent(transformParent, false);
                     var cellModel = m_grid.GetCell(new Coordinate(i, j));
                     cellViewInstance.Initialize(cellModel, OnClickCell);
-                    m_cellViewInstances.Add(cellViewInstance);
+                    m_cellViewInstances.Add(new Coordinate(i, j), cellViewInstance);
                 }
             }
         }
@@ -47,60 +48,42 @@ namespace JGM.Game
         private async void OnClickCell(CellModel cell)
         {
             m_canvasGroup.blocksRaycasts = false;
-            var connectedCells = new List<Coordinate>();
-            m_controller.FindConnectedCells(cell.coordinate, cell.color, connectedCells);
-            if (connectedCells.Count <= 1)
+
+            if (!m_controller.EmptyConnectedCells(cell, out var connectedCells))
             {
                 m_canvasGroup.blocksRaycasts = true;
                 return;
             }
 
-            EmptyConnectedCells(connectedCells);
+            RefreshConnectedCellsInGrid(connectedCells);
             await Task.Delay(TimeSpan.FromSeconds(1));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();
             RefreshCellsInGrid();
             m_canvasGroup.blocksRaycasts = true;
         }
 
-        private void EmptyConnectedCells(List<Coordinate> connectedCells)
+        private void RefreshConnectedCellsInGrid(List<CellModel> connectedCells)
         {
-            foreach (var cell in connectedCells)
+            foreach (var connectedCell in connectedCells)
             {
-                var cellView = m_cellViewInstances.Find(view => view.model.coordinate == cell);
-                if (cellView != null)
+                if (m_cellViewInstances.TryGetValue(connectedCell.coordinate, out CellView cellView))
                 {
-                    m_grid.EmptyCell(cell);
-                    m_cellViewInstances.Remove(cellView);
-                    Destroy(cellView.gameObject);
+                    cellView.Initialize(connectedCell, OnClickCell);
                 }
-
-                cell.isVisited = false;
             }
         }
 
         private void RefreshCellsInGrid()
         {
-            // Destroy existing cell views and clear the list
-            foreach (var cellView in m_cellViewInstances)
-            {
-                Destroy(cellView.gameObject);
-            }
-            m_cellViewInstances.Clear();
-
-            // Loop through the grid rows and columns to recreate cell views
             for (int i = 0; i < m_grid.rows; i++)
             {
                 for (int j = 0; j < m_grid.columns; j++)
                 {
-                    var cellModel2 = m_grid.GetCell(new Coordinate(i, j));
-                    if (!cellModel2.IsEmpty())
+                    var coordinate = new Coordinate(i, j);
+                    var cellModel = m_grid.GetCell(coordinate);
+                    if (m_cellViewInstances.TryGetValue(coordinate, out CellView cellView))
                     {
-                        var cellView2 = Instantiate(m_cellViewPrefab);
-                        m_cellViewInstances.Add(cellView2);
-                        cellView2.Initialize(cellModel2, OnClickCell);
-                        var transformParent = m_gridLayoutGroup.transform.GetChild(i * m_grid.columns + j);
-                        cellView2.transform.SetParent(transformParent, false);
-                        cellView2.transform.SetSiblingIndex(transformParent.childCount - 1);
+                        cellView.Initialize(cellModel, OnClickCell);
                     }
                 }
             }

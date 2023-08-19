@@ -14,5 +14,25 @@
             m_x = x;
             m_y = y;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Coordinate other)
+            {
+                return x == other.x && y == other.y;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + x.GetHashCode();
+                hash = hash * 23 + y.GetHashCode();
+                return hash;
+            }
+        }
     }
 }
