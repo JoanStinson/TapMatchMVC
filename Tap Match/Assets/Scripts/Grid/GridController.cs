@@ -28,8 +28,6 @@ namespace JGM.Game
 
         public void ShiftCellsDownwardsAndFillEmptySlots()
         {
-            var columnsToShift = new List<int>();
-
             for (int column = 0; column < m_grid.columns; column++)
             {
                 var filledCells = new List<CellModel>();
@@ -44,7 +42,7 @@ namespace JGM.Game
                     }
                 }
 
-                // If there are filled cells, move them to the bottom of the column
+                // If there are filled cells, shift them to the bottom of the column
                 if (filledCells.Count > 0)
                 {
                     int rowIndex = m_grid.rows - 1;
@@ -61,52 +59,10 @@ namespace JGM.Game
                         m_grid.EmptyCell(new Coordinate(rowIndex, column));
                         rowIndex--;
                     }
-
-                    if (rowIndex < m_grid.rows - 1) // Check if any shifting was performed
-                    {
-                        columnsToShift.Add(column); // Store the column index for shifting
-                    }
-                }
-            }
-
-            foreach (int columnToShift in columnsToShift)
-            {
-                ShiftCellsDownwardsFromColumn(columnToShift);
-                FillEmptySlotsFromColumn(columnToShift);
-            }
-        }
-
-        private void ShiftCellsDownwardsFromColumn(int column)
-        {
-            var filledCells = new List<CellModel>();
-
-            // Loop through each row in reverse order to find filled cells
-            for (int row = m_grid.rows - 1; row >= 0; row--)
-            {
-                var cell = m_grid.GetCell(new Coordinate(row, column));
-                if (!cell.IsEmpty())
-                {
-                    filledCells.Add(cell);
-                }
-            }
-
-            // Move filled cells to the bottom of the column
-            if (filledCells.Count > 0)
-            {
-                int rowIndex = m_grid.rows - 1;
-
-                foreach (var cell in filledCells)
-                {
-                    m_grid.SetCell(new Coordinate(rowIndex, column), cell.color);
-                    rowIndex--;
                 }
 
-                // Empty remaining cells at the top
-                while (rowIndex >= 0)
-                {
-                    m_grid.EmptyCell(new Coordinate(rowIndex, column));
-                    rowIndex--;
-                }
+                // Fill empty slots for the current column
+                FillEmptySlotsFromColumn(column);
             }
         }
 
@@ -114,12 +70,13 @@ namespace JGM.Game
         {
             for (int row = 0; row < m_grid.rows; row++)
             {
+                var coordinate = new Coordinate(row, column);
                 int randomIndex = Random.Range(0, m_cellColors.Length);
                 Color color = m_cellColors[randomIndex];
 
-                if (m_grid.GetCell(new Coordinate(row, column)).IsEmpty())
+                if (m_grid.GetCell(coordinate).IsEmpty())
                 {
-                    m_grid.SetCell(new Coordinate(row, column), color);
+                    m_grid.SetCell(coordinate, color);
                 }
             }
         }
