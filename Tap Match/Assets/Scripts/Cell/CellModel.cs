@@ -5,25 +5,28 @@ namespace JGM.Game
     public class CellModel
     {
         public Coordinate coordinate => m_coordinate;
-        public Color color => m_color;
+        public Sprite sprite => m_sprite;
+        public int type => m_type;
 
         private readonly Coordinate m_coordinate;
-        private Color m_color = Color.gray;
+        private Sprite m_sprite;
+        private readonly int m_type;
 
-        public CellModel(Coordinate coordinate, Color color)
+        public CellModel(Coordinate coordinate, Sprite sprite, int type)
         {
             m_coordinate = coordinate;
-            m_color = color;
+            m_sprite = sprite;
+            m_type = type;
         }
 
         public void EmptyCell()
         {
-            m_color = Color.gray;
+            m_sprite = null;
         }
 
         public bool IsEmpty()
         {
-            return m_color == Color.gray;
+            return m_sprite == null;
         }
     }
 }

@@ -8,15 +8,15 @@ namespace JGM.Game
         public int rows => m_rows;
         public int columns => m_columns;
         public float minCellSize => m_minCellSize;
-        public Color[] cellColors
+        public Sprite[] cellSprites
         {
-            get { return m_cellColors; }
-            set { m_cellColors = value; }
+            get { return m_cellSprites; }
+            set { m_cellSprites = value; }
         }
 
         [SerializeField, Range(5, 20)] private int m_rows;
         [SerializeField, Range(5, 20)] private int m_columns;
         [SerializeField] private float m_minCellSize = 20f;
-        [SerializeField] private Color[] m_cellColors = new Color[3];
+        [SerializeField] private Sprite[] m_cellSprites = new Sprite[3];
     }
 }

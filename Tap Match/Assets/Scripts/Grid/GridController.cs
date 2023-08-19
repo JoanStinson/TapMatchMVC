@@ -6,20 +6,20 @@ namespace JGM.Game
     public class GridController
     {
         private GridModel m_grid;
-        private Color[] m_cellColors;
+        private Sprite[] m_cellSprites;
 
         public GridModel BuildGrid(GameSettings settings)
         {
             m_grid = new GridModel(settings.rows, settings.columns);
-            m_cellColors = settings.cellColors;
+            m_cellSprites = settings.cellSprites;
 
             for (int i = 0; i < settings.rows; i++)
             {
                 for (int j = 0; j < settings.columns; j++)
                 {
-                    int randomIndex = Random.Range(0, m_cellColors.Length);
-                    Color color = m_cellColors[randomIndex];
-                    m_grid.SetCell(new Coordinate(i, j), color);
+                    int randomIndex = Random.Range(0, m_cellSprites.Length);
+                    Sprite sprite = m_cellSprites[randomIndex];
+                    m_grid.SetCell(new Coordinate(i, j), sprite, randomIndex);
                 }
             }
 
@@ -29,7 +29,7 @@ namespace JGM.Game
         public bool EmptyConnectedCells(CellModel cell, out List<CellModel> connectedCells)
         {
             connectedCells = new List<CellModel>();
-            FindConnectedCells(cell.coordinate, cell.color, connectedCells);
+            FindConnectedCells(cell.coordinate, cell.type, connectedCells);
 
             if (connectedCells.Count > 1)
             {
@@ -48,7 +48,7 @@ namespace JGM.Game
             return false;
         }
 
-        private void FindConnectedCells(Coordinate coordinate, Color targetColor, List<CellModel> connectedCells)
+        private void FindConnectedCells(Coordinate coordinate, int targetType, List<CellModel> connectedCells)
         {
             if (coordinate.x < 0 || coordinate.x >= m_grid.rows ||
                 coordinate.y < 0 || coordinate.y >= m_grid.columns)
@@ -58,7 +58,7 @@ namespace JGM.Game
 
             var cell = m_grid.GetCell(coordinate);
 
-            if (cell.color != targetColor || cell.coordinate.isVisited)
+            if (cell.type != targetType || cell.coordinate.isVisited)
             {
                 return;
             }
@@ -78,7 +78,7 @@ namespace JGM.Game
             {
                 if (IsValidCoordinate(neighbor) && IsValidConnection(coordinate, neighbor))
                 {
-                    FindConnectedCells(neighbor, targetColor, connectedCells);
+                    FindConnectedCells(neighbor, targetType, connectedCells);
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace JGM.Game
 
                     foreach (var cell in filledCells)
                     {
-                        m_grid.SetCell(new Coordinate(rowIndex, column), cell.color);
+                        m_grid.SetCell(new Coordinate(rowIndex, column), cell.sprite, cell.type);
                         rowIndex--;
                     }
 
@@ -138,12 +138,12 @@ namespace JGM.Game
             for (int row = 0; row < m_grid.rows; row++)
             {
                 var coordinate = new Coordinate(row, column);
-                int randomIndex = Random.Range(0, m_cellColors.Length);
-                Color color = m_cellColors[randomIndex];
+                int randomIndex = Random.Range(0, m_cellSprites.Length);
+                Sprite sprite = m_cellSprites[randomIndex];
 
                 if (m_grid.GetCell(coordinate).IsEmpty())
                 {
-                    m_grid.SetCell(coordinate, color);
+                    m_grid.SetCell(coordinate, sprite, randomIndex);
                 }
             }
         }

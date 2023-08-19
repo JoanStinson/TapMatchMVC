@@ -16,7 +16,7 @@ namespace JGM.Game
         public void Initialize(CellModel model, Action<CellModel> onClickCell)
         {
             this.model = model;
-            m_image.color = model.color;
+            m_image.sprite = model.sprite;
             m_button.onClick.RemoveAllListeners();
             m_button.onClick.AddListener(() => onClickCell(model));
             m_text.text = $"{model.coordinate.x}, {model.coordinate.y}";

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 35596379}
   - component: {fileID: 35596378}
   m_Layer: 5
-  m_Name: MovesTitleText (1)
+  m_Name: TapTheBallsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 51.2495, y: -198.73}
-  m_SizeDelta: {x: 266.1898, y: 77.3444}
+  m_AnchoredPosition: {x: 52.775024, y: -198.73}
+  m_SizeDelta: {x: 264.6643, y: 77.3444}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &35596378
 MonoBehaviour:
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 44.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

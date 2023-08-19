@@ -18,9 +18,9 @@ namespace JGM.Game
             m_columns = columns;
         }
 
-        public void SetCell(Coordinate coordinate, Color color)
+        public void SetCell(Coordinate coordinate, Sprite sprite, int type)
         {
-            m_grid[coordinate.x, coordinate.y] = new CellModel(coordinate, color);
+            m_grid[coordinate.x, coordinate.y] = new CellModel(coordinate, sprite, type);
         }
 
         public void EmptyCell(Coordinate coordinate)

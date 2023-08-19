@@ -15,7 +15,7 @@ MonoBehaviour:
   m_rows: 5
   m_columns: 5
   m_minCellSize: 20
-  m_cellColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0.20210934, a: 1}
-  - {r: 0, g: 0.90622044, b: 1, a: 1}
+  m_cellSprites:
+  - {fileID: 913702009, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -590620959, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+  - {fileID: -1069708758, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
