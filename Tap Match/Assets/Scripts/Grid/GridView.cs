@@ -15,6 +15,7 @@ namespace JGM.Game
         [SerializeField] private ContentSizeFitter m_contentSizeFitter;
         [SerializeField] private CellView m_cellViewPrefab;
         [SerializeField] private Transform m_cellSlotPrefab;
+        [SerializeField] private AudioSource m_popSfx;
 
         private GridModel m_grid;
         private GridController m_controller;
@@ -57,6 +58,7 @@ namespace JGM.Game
             }
 
             onCellsMatch?.Invoke();
+            m_popSfx.Play();
             RefreshConnectedCellsInGrid(connectedCells);
             await Task.Delay(TimeSpan.FromSeconds(0.5f));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();
