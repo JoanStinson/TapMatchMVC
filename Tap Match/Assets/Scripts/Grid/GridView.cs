@@ -8,6 +8,8 @@ namespace JGM.Game
 {
     public class GridView : MonoBehaviour
     {
+        public Action onCellsMatch;
+
         [SerializeField] private CanvasGroup m_canvasGroup;
         [SerializeField] private GridLayoutGroup m_gridLayoutGroup;
         [SerializeField] private ContentSizeFitter m_contentSizeFitter;
@@ -54,6 +56,7 @@ namespace JGM.Game
                 return;
             }
 
+            onCellsMatch?.Invoke();
             RefreshConnectedCellsInGrid(connectedCells);
             await Task.Delay(TimeSpan.FromSeconds(0.5f));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();
