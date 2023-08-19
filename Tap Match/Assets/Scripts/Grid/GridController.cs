@@ -26,6 +26,51 @@ namespace JGM.Game
             return m_grid;
         }
 
+        public void FindConnectedCells(Coordinate coordinate, Color targetColor, List<Coordinate> connectedCells)
+        {
+            if (coordinate.x < 0 || coordinate.x >= m_grid.rows ||
+                coordinate.y < 0 || coordinate.y >= m_grid.columns)
+            {
+                return;
+            }
+
+            var cell = m_grid.GetCell(coordinate);
+
+            if (cell.color != targetColor || cell.coordinate.isVisited)
+            {
+                return;
+            }
+
+            cell.coordinate.isVisited = true;
+            connectedCells.Add(cell.coordinate);
+
+            var neighbors = new[]
+            {
+                new Coordinate(coordinate.x + 1, coordinate.y),
+                new Coordinate(coordinate.x - 1, coordinate.y),
+                new Coordinate(coordinate.x, coordinate.y + 1),
+                new Coordinate(coordinate.x, coordinate.y - 1)
+            };
+
+            foreach (var neighbor in neighbors)
+            {
+                if (IsValidCoordinate(neighbor) && IsValidConnection(coordinate, neighbor))
+                {
+                    FindConnectedCells(neighbor, targetColor, connectedCells);
+                }
+            }
+        }
+
+        private bool IsValidCoordinate(Coordinate coordinate)
+        {
+            return coordinate.x >= 0 && coordinate.x < m_grid.rows && coordinate.y >= 0 && coordinate.y < m_grid.columns;
+        }
+
+        private bool IsValidConnection(Coordinate from, Coordinate to)
+        {
+            return from.x == to.x || from.y == to.y;
+        }
+
         public void ShiftCellsDownwardsAndFillEmptySlots()
         {
             for (int column = 0; column < m_grid.columns; column++)
