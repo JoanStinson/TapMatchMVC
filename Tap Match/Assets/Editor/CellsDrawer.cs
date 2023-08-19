@@ -2,26 +2,29 @@ using UnityEngine;
 using UnityEditor;
 using JGM.Game;
 
-[CustomEditor(typeof(Cells))]
-public class CellsDrawer : Editor
+namespace JGM.GameEditor
 {
-    private SerializedProperty colors;
-
-    private void OnEnable()
+    [CustomEditor(typeof(Cells))]
+    public class CellsDrawer : Editor
     {
-        colors = serializedObject.FindProperty("m_colors");
-    }
+        private SerializedProperty colors;
 
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
+        private void OnEnable()
+        {
+            colors = serializedObject.FindProperty("m_colors");
+        }
 
-        EditorGUILayout.PropertyField(colors, true);
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
 
-        int arraySize = colors.arraySize;
-        arraySize = Mathf.Clamp(arraySize, 3, 6);
-        colors.arraySize = arraySize;
+            EditorGUILayout.PropertyField(colors, true);
 
-        serializedObject.ApplyModifiedProperties();
+            int arraySize = colors.arraySize;
+            arraySize = Mathf.Clamp(arraySize, 3, 6);
+            colors.arraySize = arraySize;
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }
