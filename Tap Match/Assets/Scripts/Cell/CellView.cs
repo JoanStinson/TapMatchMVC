@@ -34,7 +34,7 @@ namespace JGM.Game
             }
         }
 
-        public void PopAnimation()
+        public void PlayPopAnimation()
         {
             m_animator.SetTrigger("Pop");
         }

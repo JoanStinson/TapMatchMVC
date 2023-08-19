@@ -9,7 +9,7 @@ namespace JGM.Game
 
         private void Start()
         {
-            m_gameView.Initialize(new GameController(), m_settings);
+            m_gameView.Initialize(m_settings);
         }
     }
 }

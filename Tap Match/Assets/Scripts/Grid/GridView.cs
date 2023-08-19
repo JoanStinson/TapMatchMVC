@@ -67,8 +67,7 @@ namespace JGM.Game
             {
                 if (m_cellViewInstances.TryGetValue(connectedCell.coordinate, out CellView cellView))
                 {
-                    //cellView.Initialize(connectedCell, OnClickCell);
-                    cellView.PopAnimation();
+                    cellView.PlayPopAnimation();
                 }
             }
         }

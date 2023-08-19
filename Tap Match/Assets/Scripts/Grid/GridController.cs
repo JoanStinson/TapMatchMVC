@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using static JGM.Game.GameSettings;
 using Random = UnityEngine.Random;
 
 namespace JGM.Game
@@ -151,16 +150,7 @@ namespace JGM.Game
                 if (m_grid.GetCell(coordinate).IsEmpty())
                 {
                     m_grid.SetCell(coordinate, cellAsset, randomIndex, true);
-                    //MarkColumnAsDirty(row, column);
                 }
-            }
-        }
-
-        private void MarkColumnAsDirty(int targetRow, int targetColumn)
-        {
-            for (int row = targetRow; row >= 0; row--)
-            {
-                m_grid.GetCell(new Coordinate(row, targetColumn)).needsToAnimate = true;
             }
         }
     }

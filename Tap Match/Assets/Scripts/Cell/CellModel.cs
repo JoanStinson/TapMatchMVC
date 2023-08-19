@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using static JGM.Game.GameSettings;
+﻿using UnityEngine;
 
 namespace JGM.Game
 {
@@ -24,11 +22,7 @@ namespace JGM.Game
 
         public CellModel(Coordinate coordinate, CellAsset cellAsset, int type)
         {
-            m_coordinate = coordinate;
-            m_sprite = cellAsset.sprite;
-            m_animatorController = cellAsset.animatorController;
-            m_type = type;
-            m_needsToAnimate = true;
+            SetValues(coordinate, cellAsset, type, true);
         }
 
         public void SetValues(Coordinate coordinate, CellAsset cellAsset, int type, bool needsToAnimate)

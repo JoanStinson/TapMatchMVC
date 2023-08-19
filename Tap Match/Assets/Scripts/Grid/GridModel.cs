@@ -1,6 +1,4 @@
-﻿using static JGM.Game.GameSettings;
-
-namespace JGM.Game
+﻿namespace JGM.Game
 {
     public class GridModel
     {
@@ -23,7 +21,7 @@ namespace JGM.Game
             m_grid[coordinate.x, coordinate.y] = new CellModel(coordinate, cellAsset, type);
         }
 
-        public void SetCell(Coordinate coordinate, CellAsset cellAsset, int type, bool needsToAnimate = false)
+        public void SetCell(Coordinate coordinate, CellAsset cellAsset, int type, bool needsToAnimate)
         {
             m_grid[coordinate.x, coordinate.y].SetValues(coordinate, cellAsset, type, needsToAnimate);
         }

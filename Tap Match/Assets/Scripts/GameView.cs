@@ -6,7 +6,7 @@ namespace JGM.Game
     {
         [SerializeField] private GridView m_gridView;
 
-        public void Initialize(GameController controller, GameSettings settings)
+        public void Initialize(GameSettings settings)
         {
             m_gridView.Initialize(new GridController(), settings);
         }
