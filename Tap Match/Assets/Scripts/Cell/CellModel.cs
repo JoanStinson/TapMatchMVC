@@ -8,17 +8,12 @@ namespace JGM.Game
         public Sprite sprite => m_sprite;
         public AnimatorOverrideController animatorController => m_animatorController;
         public int type => m_type;
-        public bool needsToAnimate
-        {
-            get => m_needsToAnimate;
-            set => m_needsToAnimate = value;
-        }
+        public bool needsToAnimate { get; set; }
 
         private Coordinate m_coordinate;
         private Sprite m_sprite;
         private AnimatorOverrideController m_animatorController;
         private int m_type;
-        private bool m_needsToAnimate;
 
         public CellModel(Coordinate coordinate, CellAsset cellAsset, int type)
         {
@@ -31,7 +26,7 @@ namespace JGM.Game
             m_sprite = cellAsset.sprite;
             m_animatorController = cellAsset.animatorController;
             m_type = type;
-            m_needsToAnimate = needsToAnimate;
+            this.needsToAnimate = needsToAnimate;
         }
 
         public void EmptyCell()
