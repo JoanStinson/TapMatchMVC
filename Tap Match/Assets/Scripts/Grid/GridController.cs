@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using static JGM.Game.GameSettings;
 using Random = UnityEngine.Random;
 
@@ -54,12 +52,16 @@ namespace JGM.Game
         private void FindConnectedCells(Coordinate coordinate, int targetType, List<CellModel> connectedCells)
         {
             if (coordinate.x < 0 || coordinate.x >= m_grid.rows || coordinate.y < 0 || coordinate.y >= m_grid.columns)
+            {
                 return;
+            }
 
             var cell = m_grid.GetCell(coordinate);
 
             if (cell.type != targetType || cell.coordinate.isVisited)
+            {
                 return;
+            }
 
             cell.coordinate.isVisited = true;
             connectedCells.Add(cell);
@@ -96,8 +98,9 @@ namespace JGM.Game
             for (int column = 0; column < m_grid.columns; column++)
             {
                 var filledCells = new List<CellModel>();
+                int emptyRowIndex = -1;
 
-                // Loop through each row in reverse order to get filled cells
+                // Loop through each row in reverse order to get filled cells and find the empty row index
                 for (int row = m_grid.rows - 1; row >= 0; row--)
                 {
                     var cell = m_grid.GetCell(new Coordinate(row, column));
@@ -105,17 +108,22 @@ namespace JGM.Game
                     {
                         filledCells.Add(cell);
                     }
+                    else if (emptyRowIndex == -1)
+                    {
+                        emptyRowIndex = row;
+                    }
                 }
 
                 // If there are filled cells, shift them to the bottom of the column
-                if (filledCells.Count > 0)
+                if (filledCells.Count > 0 && filledCells.Count < m_grid.rows)
                 {
                     int rowIndex = m_grid.rows - 1;
 
-                    foreach (var cell in filledCells)
+                    foreach (var filledCell in filledCells)
                     {
-                        var cellAsset = new CellAsset(cell.sprite, cell.animatorController);
-                        m_grid.SetCell(new Coordinate(rowIndex, column), cellAsset, cell.type);
+                        var cellAsset = new CellAsset(filledCell.sprite, filledCell.animatorController);
+                        bool shouldAnimate = filledCell.coordinate.x <= emptyRowIndex;
+                        m_grid.SetCell(new Coordinate(rowIndex, column), cellAsset, filledCell.type, shouldAnimate);
                         rowIndex--;
                     }
 
@@ -143,7 +151,16 @@ namespace JGM.Game
                 if (m_grid.GetCell(coordinate).IsEmpty())
                 {
                     m_grid.SetCell(coordinate, cellAsset, randomIndex, true);
+                    //MarkColumnAsDirty(row, column);
                 }
+            }
+        }
+
+        private void MarkColumnAsDirty(int targetRow, int targetColumn)
+        {
+            for (int row = targetRow; row >= 0; row--)
+            {
+                m_grid.GetCell(new Coordinate(row, targetColumn)).needsToAnimate = true;
             }
         }
     }

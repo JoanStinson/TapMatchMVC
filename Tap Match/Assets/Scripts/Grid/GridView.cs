@@ -55,7 +55,7 @@ namespace JGM.Game
             }
 
             RefreshConnectedCellsInGrid(connectedCells);
-            await Task.Delay(TimeSpan.FromSeconds(1.2f));
+            await Task.Delay(TimeSpan.FromSeconds(0.5f));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();
             RefreshCellsInGrid();
             m_canvasGroup.blocksRaycasts = true;
