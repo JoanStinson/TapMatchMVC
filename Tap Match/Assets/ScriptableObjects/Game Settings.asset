@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8168bbcf4bb487419b8ca4165108d81, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1a455048a5f974fa2e1e10f8ec314b, type: 3}
   m_Name: Game Settings
   m_EditorClassIdentifier: 
-  m_gridSize: {fileID: 11400000, guid: 202a3606a8983504ea36d1fb47f8d29d, type: 2}
-  m_cells: {fileID: 11400000, guid: f7a342c44b1e6774b88ee923a369e96d, type: 2}
+  m_rows: 5
+  m_columns: 5
+  m_minCellSize: 20
+  m_cellColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.20210934, a: 1}
+  - {r: 0, g: 0.90622044, b: 1, a: 1}

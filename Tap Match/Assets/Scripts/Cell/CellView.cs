@@ -7,11 +7,11 @@ namespace JGM.Game
 {
     public class CellView : MonoBehaviour
     {
+        public CellModel model { get; private set; }
+
         [SerializeField] private Image m_image;
         [SerializeField] private Button m_button;
         [SerializeField] private TextMeshProUGUI m_text;
-
-        public CellModel model { get; internal set; }
 
         public void Initialize(CellModel model, Action<CellModel> onClickCell)
         {

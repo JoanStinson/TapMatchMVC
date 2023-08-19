@@ -1,5 +1,5 @@
 {
-    "name": "JGM.Editor",
+    "name": "JGM.GameEditor",
     "rootNamespace": "",
     "references": [
         "GUID:a71604f3a763d404397f2286de04a48d"
