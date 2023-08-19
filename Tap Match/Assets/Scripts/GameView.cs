@@ -9,6 +9,7 @@ namespace JGM.Game
 {
     public class GameView : MonoBehaviour, IGameView
     {
+        [SerializeField] private CanvasGroup m_canvasGroup;
         [SerializeField] private GridLayoutGroup m_grid;
         [SerializeField] private CellView m_cellViewPrefab;
 
@@ -43,6 +44,8 @@ namespace JGM.Game
 
         private async void OnClickCell(CellModel cellModel)
         {
+            m_canvasGroup.blocksRaycasts = false;
+
             var connectedCells = new List<Coordinate>();
             var targetCoordinate = cellModel.coordinate;
             var targetColor = cellModel.color;
@@ -51,6 +54,7 @@ namespace JGM.Game
 
             if (connectedCells.Count <= 1)
             {
+                m_canvasGroup.blocksRaycasts = true;
                 return;
             }
 
@@ -97,6 +101,8 @@ namespace JGM.Game
                     }
                 }
             }
+
+            m_canvasGroup.blocksRaycasts = true;
         }
 
 

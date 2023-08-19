@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105449ecececfe048bc51d1cc4690535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_canvasGroup: {fileID: 519532315}
   m_grid: {fileID: 838107129}
   m_cellViewPrefab: {fileID: 9030392788588195785, guid: 4f628151fe0db4e429e9e4e09f084ad3, type: 3}
 --- !u!1 &400296688
@@ -886,6 +887,7 @@ GameObject:
   - component: {fileID: 519532312}
   - component: {fileID: 519532314}
   - component: {fileID: 519532313}
+  - component: {fileID: 519532315}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -952,6 +954,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519532311}
   m_CullTransparentMesh: 1
+--- !u!225 &519532315
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519532311}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &556714328
 GameObject:
   m_ObjectHideFlags: 0
