@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using static JGM.Game.GameSettings;
 
 namespace JGM.Game
 {
@@ -18,9 +18,14 @@ namespace JGM.Game
             m_columns = columns;
         }
 
-        public void SetCell(Coordinate coordinate, Sprite sprite, int type)
+        public void InitCell(Coordinate coordinate, CellAsset cellAsset, int type)
         {
-            m_grid[coordinate.x, coordinate.y] = new CellModel(coordinate, sprite, type);
+            m_grid[coordinate.x, coordinate.y] = new CellModel(coordinate, cellAsset, type);
+        }
+
+        public void SetCell(Coordinate coordinate, CellAsset cellAsset, int type, bool needsToAnimate = false)
+        {
+            m_grid[coordinate.x, coordinate.y].SetValues(coordinate, cellAsset, type, needsToAnimate);
         }
 
         public void EmptyCell(Coordinate coordinate)

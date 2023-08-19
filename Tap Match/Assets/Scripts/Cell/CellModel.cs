@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using static JGM.Game.GameSettings;
 
 namespace JGM.Game
 {
@@ -6,17 +8,36 @@ namespace JGM.Game
     {
         public Coordinate coordinate => m_coordinate;
         public Sprite sprite => m_sprite;
+        public AnimatorOverrideController animatorController => m_animatorController;
         public int type => m_type;
+        public bool needsToAnimate
+        {
+            get => m_needsToAnimate;
+            set => m_needsToAnimate = value;
+        }
 
-        private readonly Coordinate m_coordinate;
+        private Coordinate m_coordinate;
         private Sprite m_sprite;
-        private readonly int m_type;
+        private AnimatorOverrideController m_animatorController;
+        private int m_type;
+        private bool m_needsToAnimate;
 
-        public CellModel(Coordinate coordinate, Sprite sprite, int type)
+        public CellModel(Coordinate coordinate, CellAsset cellAsset, int type)
         {
             m_coordinate = coordinate;
-            m_sprite = sprite;
+            m_sprite = cellAsset.sprite;
+            m_animatorController = cellAsset.animatorController;
             m_type = type;
+            m_needsToAnimate = true;
+        }
+
+        public void SetValues(Coordinate coordinate, CellAsset cellAsset, int type, bool needsToAnimate)
+        {
+            m_coordinate = coordinate;
+            m_sprite = cellAsset.sprite;
+            m_animatorController = cellAsset.animatorController;
+            m_type = type;
+            m_needsToAnimate = needsToAnimate;
         }
 
         public void EmptyCell()

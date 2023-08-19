@@ -12,6 +12,7 @@ namespace JGM.Game
         [SerializeField] private Image m_image;
         [SerializeField] private Button m_button;
         [SerializeField] private TextMeshProUGUI m_text;
+        [SerializeField] private Animator m_animator;
 
         public void Initialize(CellModel model, Action<CellModel> onClickCell)
         {
@@ -20,6 +21,22 @@ namespace JGM.Game
             m_button.onClick.RemoveAllListeners();
             m_button.onClick.AddListener(() => onClickCell(model));
             m_text.text = $"{model.coordinate.x}, {model.coordinate.y}";
+            m_animator.runtimeAnimatorController = model.animatorController;
+
+            if (model.needsToAnimate)
+            {
+                m_animator.Rebind();
+                model.needsToAnimate = false;
+            }
+            else
+            {
+                m_animator.SetTrigger("Idle");
+            }
+        }
+
+        public void PopAnimation()
+        {
+            m_animator.SetTrigger("Pop");
         }
     }
 }

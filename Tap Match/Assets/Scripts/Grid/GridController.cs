@@ -1,25 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using static JGM.Game.GameSettings;
+using Random = UnityEngine.Random;
 
 namespace JGM.Game
 {
     public class GridController
     {
         private GridModel m_grid;
-        private Sprite[] m_cellSprites;
+        private CellAsset[] m_cellAssets;
 
         public GridModel BuildGrid(GameSettings settings)
         {
             m_grid = new GridModel(settings.rows, settings.columns);
-            m_cellSprites = settings.cellSprites;
+            m_cellAssets = settings.cellAssets;
 
             for (int i = 0; i < settings.rows; i++)
             {
                 for (int j = 0; j < settings.columns; j++)
                 {
-                    int randomIndex = Random.Range(0, m_cellSprites.Length);
-                    Sprite sprite = m_cellSprites[randomIndex];
-                    m_grid.SetCell(new Coordinate(i, j), sprite, randomIndex);
+                    int randomIndex = Random.Range(0, m_cellAssets.Length);
+                    CellAsset cellAsset = m_cellAssets[randomIndex];
+                    m_grid.InitCell(new Coordinate(i, j), cellAsset, randomIndex);
                 }
             }
 
@@ -50,18 +53,13 @@ namespace JGM.Game
 
         private void FindConnectedCells(Coordinate coordinate, int targetType, List<CellModel> connectedCells)
         {
-            if (coordinate.x < 0 || coordinate.x >= m_grid.rows ||
-                coordinate.y < 0 || coordinate.y >= m_grid.columns)
-            {
+            if (coordinate.x < 0 || coordinate.x >= m_grid.rows || coordinate.y < 0 || coordinate.y >= m_grid.columns)
                 return;
-            }
 
             var cell = m_grid.GetCell(coordinate);
 
             if (cell.type != targetType || cell.coordinate.isVisited)
-            {
                 return;
-            }
 
             cell.coordinate.isVisited = true;
             connectedCells.Add(cell);
@@ -116,7 +114,8 @@ namespace JGM.Game
 
                     foreach (var cell in filledCells)
                     {
-                        m_grid.SetCell(new Coordinate(rowIndex, column), cell.sprite, cell.type);
+                        var cellAsset = new CellAsset(cell.sprite, cell.animatorController);
+                        m_grid.SetCell(new Coordinate(rowIndex, column), cellAsset, cell.type);
                         rowIndex--;
                     }
 
@@ -138,12 +137,12 @@ namespace JGM.Game
             for (int row = 0; row < m_grid.rows; row++)
             {
                 var coordinate = new Coordinate(row, column);
-                int randomIndex = Random.Range(0, m_cellSprites.Length);
-                Sprite sprite = m_cellSprites[randomIndex];
+                int randomIndex = Random.Range(0, m_cellAssets.Length);
+                CellAsset cellAsset = m_cellAssets[randomIndex];
 
                 if (m_grid.GetCell(coordinate).IsEmpty())
                 {
-                    m_grid.SetCell(coordinate, sprite, randomIndex);
+                    m_grid.SetCell(coordinate, cellAsset, randomIndex, true);
                 }
             }
         }

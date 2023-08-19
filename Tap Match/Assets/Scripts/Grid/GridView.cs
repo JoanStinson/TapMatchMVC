@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace JGM.Game
@@ -56,7 +55,7 @@ namespace JGM.Game
             }
 
             RefreshConnectedCellsInGrid(connectedCells);
-            await Task.Delay(TimeSpan.FromSeconds(1));
+            await Task.Delay(TimeSpan.FromSeconds(1.2f));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();
             RefreshCellsInGrid();
             m_canvasGroup.blocksRaycasts = true;
@@ -68,7 +67,8 @@ namespace JGM.Game
             {
                 if (m_cellViewInstances.TryGetValue(connectedCell.coordinate, out CellView cellView))
                 {
-                    cellView.Initialize(connectedCell, OnClickCell);
+                    //cellView.Initialize(connectedCell, OnClickCell);
+                    cellView.PopAnimation();
                 }
             }
         }
