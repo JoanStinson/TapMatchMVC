@@ -15,6 +15,7 @@ namespace JGM.Game
         [SerializeField] private ContentSizeFitter m_contentSizeFitter;
         [SerializeField] private CellView m_cellViewPrefab;
         [SerializeField] private Transform m_cellSlotPrefab;
+        [SerializeField] private float m_delayToShiftCellsInSeconds = 0.5f;
         [SerializeField] private AudioSource m_popSfx;
 
         private GridModel m_grid;
@@ -60,7 +61,7 @@ namespace JGM.Game
             onCellsMatch?.Invoke();
             m_popSfx.Play();
             RefreshConnectedCellsInGrid(connectedCells);
-            await Task.Delay(TimeSpan.FromSeconds(0.5f));
+            await Task.Delay(TimeSpan.FromSeconds(m_delayToShiftCellsInSeconds));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();
             RefreshCellsInGrid();
             m_canvasGroup.blocksRaycasts = true;
