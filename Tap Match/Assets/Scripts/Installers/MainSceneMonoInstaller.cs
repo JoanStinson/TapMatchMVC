@@ -7,6 +7,7 @@ namespace JGM.Game
     {
         [Header("Services")]
         [SerializeField] private AudioService m_audioServiceInstance;
+        [SerializeField] private CoroutineService m_coroutineServiceInstance;
 
         [Header("Prefabs")]
         [SerializeField] private CellView m_cellViewPrefab;
@@ -21,6 +22,7 @@ namespace JGM.Game
         private void BindServices()
         {
             Container.Bind<IAudioService>().FromInstance(m_audioServiceInstance);
+            Container.Bind<ICoroutineService>().FromInstance(m_coroutineServiceInstance);
         }
 
         private void BindPrefabs()

@@ -1,45 +1,42 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace JGM.Game
 {
     public class ComponentPool<T> where T : Component
     {
-        protected readonly T[] m_pool;
+        private readonly Stack<T> m_poolStack = new Stack<T>();
 
         public ComponentPool(int poolSize, Transform poolParent)
         {
-            m_pool = new T[poolSize];
-            for (int i = 0; i < poolSize; ++i)
+            for (int i = 0; i < poolSize; i++)
             {
                 var pooledGO = new GameObject();
                 pooledGO.SetName($"Pooled {typeof(T)} {i + 1}");
                 pooledGO.transform.SetParent(poolParent);
                 pooledGO.SetActive(false);
                 var pooledComponent = pooledGO.AddComponent<T>();
-                m_pool[i] = pooledComponent;
+                m_poolStack.Push(pooledComponent);
             }
         }
 
-        public void Get(out T component)
+        public T Get()
         {
-            component = null;
-            for (int i = 0; i < m_pool.Length; ++i)
+            if (m_poolStack.Count == 0)
             {
-                if (!m_pool[i].gameObject.activeSelf)
-                {
-                    component = m_pool[i];
-                    component.gameObject.SetActive(true);
-                    return;
-                }
+                Debug.LogWarning($"ComponentPool<{typeof(T)}> is empty. All pooled components are in use.");
+                return null;
             }
+
+            T component = m_poolStack.Pop();
+            component.gameObject.SetActive(true);
+            return component;
         }
 
-        public void Destroy()
+        public void Return(T component)
         {
-            for (int i = 0; i < m_pool.Length; ++i)
-            {
-                GameObject.Destroy(m_pool[i].gameObject);
-            }
+            component.gameObject.SetActive(false);
+            m_poolStack.Push(component);
         }
     }
 }
