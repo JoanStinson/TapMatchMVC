@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using static JGM.Game.LocalizationService;
@@ -9,7 +8,7 @@ namespace JGM.Game
 {
     public class TopHeaderView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI m_movesAmountText;
+        [SerializeField] private TextMeshProAnimatedBinder m_movesAmountText;
         [SerializeField] private Button m_languageButton;
 
         [Inject] private ILocalizationService m_localizationService;
@@ -20,7 +19,7 @@ namespace JGM.Game
         public void Initialize(int initialMovesAmount)
         {
             m_movesAmount = initialMovesAmount;
-            m_movesAmountText.text = m_movesAmount.ToString();
+            m_movesAmountText.SetValue(initialMovesAmount);
             m_languageButton.onClick.RemoveAllListeners();
             m_languageButton.onClick.AddListener(ChangeLanguageToRandom);
         }
@@ -43,7 +42,7 @@ namespace JGM.Game
         public void IncreaseMovesAmount()
         {
             m_movesAmount++;
-            m_movesAmountText.text = m_movesAmount.ToString();
+            m_movesAmountText.SetValueAnimated(m_movesAmount);
         }
     }
 }

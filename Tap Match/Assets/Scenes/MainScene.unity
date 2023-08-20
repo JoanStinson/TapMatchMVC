@@ -1227,6 +1227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1234149805}
   - component: {fileID: 1234149807}
+  - component: {fileID: 1234149808}
   - component: {fileID: 1234149806}
   m_Layer: 5
   m_Name: MovesAmountText
@@ -1352,6 +1353,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234149804}
   m_CullTransparentMesh: 1
+--- !u!114 &1234149808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234149804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e1c6c7691737434d921ac29d389bab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_text: {fileID: 1234149806}
+  m_textAnimationDuration: 0.25
+  m_addingAnimateColor: {r: 0, g: 0.9529412, b: 1, a: 1}
+  m_subtractingAnimateColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1234209144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,7 +1869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bc71a05607b0e46b46cb788f4121b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_movesAmountText: {fileID: 1234149806}
+  m_movesAmountText: {fileID: 1234149808}
   m_languageButton: {fileID: 1457015765}
 --- !u!1 &2077270557
 GameObject:
