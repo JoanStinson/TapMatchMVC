@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 35596379}
   - component: {fileID: 35596378}
   m_Layer: 5
-  m_Name: TapTheBallsText
+  m_Name: LanguageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.774902, y: -198.73}
-  m_SizeDelta: {x: 264.6643, y: 77.3444}
+  m_AnchoredPosition: {x: 52.774902, y: -206.2884}
+  m_SizeDelta: {x: 264.6643, y: 61.9253}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &35596378
 MonoBehaviour:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap the balls!
+  m_text: Language
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -208,12 +208,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.5
+  m_fontSize: 55.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 90
+  m_fontSizeMax: 127.2
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -699,7 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_topHeaderView: {fileID: 2051929590}
   m_gridView: {fileID: 1298838987}
-  m_initialMatchesAmount: 0
+  m_initialMovesAmount: 0
   m_fadePanelImage: {fileID: 2077270559}
   m_fadeDuration: 1
 --- !u!1 &838107126
@@ -932,9 +932,10 @@ GameObject:
   m_Component:
   - component: {fileID: 922837253}
   - component: {fileID: 922837255}
+  - component: {fileID: 922837256}
   - component: {fileID: 922837254}
   m_Layer: 5
-  m_Name: MatchesTitleText
+  m_Name: MovesTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,7 +981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Matches
+  m_text: Moves
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1007,12 +1008,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75.5
+  m_fontSize: 90
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 75.5
+  m_fontSizeMax: 90
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1057,6 +1058,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922837252}
   m_CullTransparentMesh: 1
+--- !u!114 &922837256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922837252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3259c844a4e1142b6d2566aab4c51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_localizedKey: TID_TITLE_MOVES
 --- !u!1 &1039624798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,7 +1229,7 @@ GameObject:
   - component: {fileID: 1234149807}
   - component: {fileID: 1234149806}
   m_Layer: 5
-  m_Name: MatchesAmountText
+  m_Name: MovesAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1716,7 +1730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bc71a05607b0e46b46cb788f4121b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_matchesAmountText: {fileID: 1234149806}
+  m_movesAmountText: {fileID: 1234149806}
 --- !u!1 &2077270557
 GameObject:
   m_ObjectHideFlags: 0

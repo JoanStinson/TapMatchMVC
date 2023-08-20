@@ -23,6 +23,7 @@ namespace JGM.Game
         {
             Container.Bind<IAudioService>().FromInstance(m_audioServiceInstance);
             Container.Bind<ICoroutineService>().FromInstance(m_coroutineServiceInstance);
+            Container.Bind<ILocalizationService>().To<LocalizationService>().AsSingle();
         }
 
         private void BindPrefabs()

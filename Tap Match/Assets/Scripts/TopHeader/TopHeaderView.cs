@@ -6,20 +6,20 @@ namespace JGM.Game
     public class TopHeaderView : MonoBehaviour
     {
         [SerializeField] 
-        private TextMeshProUGUI m_matchesAmountText;
+        private TextMeshProUGUI m_movesAmountText;
 
-        private int m_matchesAmount;
+        private int m_movesAmount;
 
-        public void Initialize(int initialMatchesAmount)
+        public void Initialize(int initialMovesAmount)
         {
-            m_matchesAmount = initialMatchesAmount;
-            m_matchesAmountText.text = m_matchesAmount.ToString();
+            m_movesAmount = initialMovesAmount;
+            m_movesAmountText.text = m_movesAmount.ToString();
         }
 
-        public void IncreaseMatchesAmount()
+        public void IncreaseMovesAmount()
         {
-            m_matchesAmount++;
-            m_matchesAmountText.text = m_matchesAmount.ToString();
+            m_movesAmount++;
+            m_movesAmountText.text = m_movesAmount.ToString();
         }
     }
 }
