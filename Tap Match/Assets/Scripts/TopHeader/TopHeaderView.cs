@@ -10,6 +10,7 @@ namespace JGM.Game
     {
         [SerializeField] private TextMeshProAnimatedBinder m_movesAmountText;
         [SerializeField] private Button m_languageButton;
+        [SerializeField] private Button m_bombButton;
 
         [Inject] private ILocalizationService m_localizationService;
         [Inject] private IAudioService m_audioService;
@@ -22,6 +23,8 @@ namespace JGM.Game
             m_movesAmountText.SetValue(initialMovesAmount);
             m_languageButton.onClick.RemoveAllListeners();
             m_languageButton.onClick.AddListener(ChangeLanguageToRandom);
+            m_bombButton.onClick.RemoveAllListeners();
+            m_bombButton.onClick.AddListener(() => m_audioService.Play(AudioFileNames.ButtonClickSfx));
         }
 
         private void ChangeLanguageToRandom()
