@@ -120,7 +120,7 @@ namespace JGM.Game
 
                     foreach (var filledCell in filledCells)
                     {
-                        var cellAsset = new CellAsset(filledCell.sprite, filledCell.animatorController);
+                        var cellAsset = new CellAsset(filledCell.sprite, filledCell.overrideController);
                         bool shouldAnimate = filledCell.coordinate.x <= emptyRowIndex;
                         m_grid.SetCell(new Coordinate(rowIndex, column), cellAsset, filledCell.type, shouldAnimate);
                         rowIndex--;
@@ -151,6 +151,28 @@ namespace JGM.Game
                 {
                     m_grid.SetCell(coordinate, cellAsset, randomIndex, true);
                 }
+            }
+        }
+
+        public void EmptyCellsFromType(int cellType, out List<CellModel> cellsFromType)
+        {
+            cellsFromType = new List<CellModel>();
+
+            for (int i = 0; i < m_grid.rows; i++)
+            {
+                for (int j = 0; j < m_grid.columns; j++)
+                {
+                    var cell = m_grid.GetCell(new Coordinate(i, j));
+                    if (!cell.IsEmpty() && cell.type == cellType)
+                    {
+                        cellsFromType.Add(cell);
+                    }
+                }
+            }
+
+            foreach (var cell in cellsFromType)
+            {
+                cell.EmptyCell();
             }
         }
     }

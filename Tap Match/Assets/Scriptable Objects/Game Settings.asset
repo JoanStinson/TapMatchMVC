@@ -17,8 +17,8 @@ MonoBehaviour:
   m_minCellSize: 20
   m_cellAssets:
   - sprite: {fileID: 913702009, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
-    animatorController: {fileID: 22100000, guid: fe4a75c3f8f235e4397003f919d2317c, type: 2}
+    overrideController: {fileID: 22100000, guid: fe4a75c3f8f235e4397003f919d2317c, type: 2}
   - sprite: {fileID: -590620959, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
-    animatorController: {fileID: 22100000, guid: 71bf2ad19155a754992f3c4f5738a4db, type: 2}
+    overrideController: {fileID: 22100000, guid: 71bf2ad19155a754992f3c4f5738a4db, type: 2}
   - sprite: {fileID: -1069708758, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
-    animatorController: {fileID: 22100000, guid: e374d878eeb6bfd4c8d94821a65b871f, type: 2}
+    overrideController: {fileID: 22100000, guid: e374d878eeb6bfd4c8d94821a65b871f, type: 2}

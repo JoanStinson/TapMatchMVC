@@ -7,12 +7,12 @@ namespace JGM.Game
     public class CellAsset
     {
         public Sprite sprite;
-        public AnimatorOverrideController animatorController;
+        public AnimatorOverrideController overrideController;
 
-        public CellAsset(Sprite sprite, AnimatorOverrideController animatorController)
+        public CellAsset(Sprite sprite, AnimatorOverrideController overrideController)
         {
             this.sprite = sprite;
-            this.animatorController = animatorController;
+            this.overrideController = overrideController;
         }
     }
 }

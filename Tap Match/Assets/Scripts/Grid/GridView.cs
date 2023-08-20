@@ -53,7 +53,7 @@ namespace JGM.Game
             }
         }
 
-        private async void OnClickCell(CellModel cell)
+        private void OnClickCell(CellModel cell)
         {
             m_canvasGroup.blocksRaycasts = false;
 
@@ -64,20 +64,25 @@ namespace JGM.Game
                 return;
             }
 
+            PlayPopAnimationAndRefreshGrid(connectedCells);
+        }
+
+        private async void PlayPopAnimationAndRefreshGrid(List<CellModel> connectedCells)
+        {
             onCellsMatch?.Invoke();
             m_audioService.Play(AudioFileNames.PopSfx);
-            RefreshConnectedCellsInGrid(connectedCells);
+            PlayPopAnimationForCells(connectedCells);
             await Task.Delay(TimeSpan.FromSeconds(m_delayToShiftCellsInSeconds));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();
             RefreshCellsInGrid();
             m_canvasGroup.blocksRaycasts = true;
         }
 
-        private void RefreshConnectedCellsInGrid(List<CellModel> connectedCells)
+        private void PlayPopAnimationForCells(List<CellModel> cells)
         {
-            foreach (var connectedCell in connectedCells)
+            foreach (var cell in cells)
             {
-                if (m_cellViewInstances.TryGetValue(connectedCell.coordinate, out CellView cellView))
+                if (m_cellViewInstances.TryGetValue(cell.coordinate, out CellView cellView))
                 {
                     cellView.PlayPopAnimation();
                 }
@@ -98,6 +103,13 @@ namespace JGM.Game
                     }
                 }
             }
+        }
+
+        public void EmptyCellsThatMatchWithBombType(int currentBombCellType)
+        {
+            m_canvasGroup.blocksRaycasts = false;
+            m_controller.EmptyCellsFromType(currentBombCellType, out var cellsFromType);
+            PlayPopAnimationAndRefreshGrid(cellsFromType);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace JGM.Game
             m_button.onClick.RemoveAllListeners();
             m_button.onClick.AddListener(() => onClickCell(model));
             m_text.text = $"{model.coordinate.x}, {model.coordinate.y}";
-            m_animator.runtimeAnimatorController = model.animatorController;
+            m_animator.runtimeAnimatorController = model.overrideController;
 
             if (model.needsToAnimate)
             {

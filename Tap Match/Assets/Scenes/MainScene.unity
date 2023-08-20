@@ -307,7 +307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_topHeaderView: {fileID: 2051929590}
   m_gridView: {fileID: 1298838987}
-  m_initialMovesAmount: 0
   m_fadePanelImage: {fileID: 2077270559}
   m_fadeDuration: 1
 --- !u!1 &838107126
@@ -1477,6 +1476,7 @@ GameObject:
   - component: {fileID: 2004971802}
   - component: {fileID: 2004971804}
   - component: {fileID: 2004971803}
+  - component: {fileID: 2004971805}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -1542,6 +1542,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004971801}
   m_CullTransparentMesh: 1
+--- !u!95 &2004971805
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004971801}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 71bf2ad19155a754992f3c4f5738a4db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2034159560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,6 +1696,8 @@ MonoBehaviour:
   m_movesAmountText: {fileID: 1234149808}
   m_languageButton: {fileID: 1457015765}
   m_bombButton: {fileID: 2142950282}
+  m_bombIcon: {fileID: 2004971803}
+  m_bombAnimator: {fileID: 2004971805}
 --- !u!1 &2077270557
 GameObject:
   m_ObjectHideFlags: 0

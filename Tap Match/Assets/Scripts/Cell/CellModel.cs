@@ -6,7 +6,7 @@ namespace JGM.Game
     {
         public Coordinate coordinate { get; private set; }
         public Sprite sprite { get; private set; }
-        public AnimatorOverrideController animatorController { get; private set; }
+        public AnimatorOverrideController overrideController { get; private set; }
         public int type { get; private set; }
         public bool needsToAnimate { get; set; }
 
@@ -19,7 +19,7 @@ namespace JGM.Game
         {
             this.coordinate = coordinate;
             this.sprite = cellAsset.sprite;
-            this.animatorController = cellAsset.animatorController;
+            this.overrideController = cellAsset.overrideController;
             this.type = type;
             this.needsToAnimate = needsToAnimate;
         }
