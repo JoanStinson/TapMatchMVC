@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using JGM.Game;
 
-namespace Ubisoft.Tribes
+namespace JGM.Game
 {
     [RequireComponent(typeof(TextMeshProAnimatedBinder))]
     [RequireComponent(typeof(DOTweenAnimation))]

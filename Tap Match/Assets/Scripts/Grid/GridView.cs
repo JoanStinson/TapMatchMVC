@@ -42,7 +42,7 @@ namespace JGM.Game
                 {
                     var cellSlotInstance = m_cellSlotFactory.Create();
                     cellSlotInstance.SetParent(m_gridLayoutGroup.transform, false);
-                    
+
                     var cellViewInstance = m_cellViewFactory.Create();
                     var transformParent = m_gridLayoutGroup.transform.GetChild(i * m_grid.columns + j);
                     cellViewInstance.transform.SetParent(transformParent, false);

@@ -5,7 +5,7 @@ namespace JGM.Game
 {
     public class TapMatch : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]
         private GameView m_gameView;
 
         [Inject]
