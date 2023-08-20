@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Art Folder Sprite Atlas
+  m_Name: New Sprite Atlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -32,7 +32,9 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: 8278e156d24a85540bfb538a7f06bb18, type: 3}
+    - {fileID: 2800000, guid: a2668651fe579d94ba4113db436cd015, type: 3}
+    - {fileID: 2800000, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
+    - {fileID: 2800000, guid: 4de3d300045fa3e4fad1b14cb2164783, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -128,5 +130,5 @@ SpriteAtlas:
   - Candies_Jerom_CCBYSA3_32
   - 4_Orange
   m_RenderDataMap: {}
-  m_Tag: Art Folder Sprite Atlas
+  m_Tag: New Sprite Atlas
   m_IsVariant: 0
