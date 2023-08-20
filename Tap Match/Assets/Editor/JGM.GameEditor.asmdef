@@ -2,7 +2,8 @@
     "name": "JGM.GameEditor",
     "rootNamespace": "",
     "references": [
-        "GUID:a71604f3a763d404397f2286de04a48d"
+        "GUID:a71604f3a763d404397f2286de04a48d",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
