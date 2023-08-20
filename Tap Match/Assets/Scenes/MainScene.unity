@@ -544,7 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba300eb5158fa54280cf277043cc575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_settings: {fileID: 11400000, guid: 616a928368b906649918323b2cd9d45d, type: 2}
   m_gameView: {fileID: 519532316}
 --- !u!4 &385696078
 Transform:
@@ -1418,6 +1417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audioServiceInstance: {fileID: 1181192681}
+  m_cellViewPrefab: {fileID: 2389102330469617916, guid: 4f628151fe0db4e429e9e4e09f084ad3, type: 3}
+  m_cellSlotPrefab: {fileID: 2957789710997769554, guid: 50f1ab6b158335e4882cc388d08058e9, type: 3}
 --- !u!1 &1268914307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,8 +1540,6 @@ MonoBehaviour:
   m_canvasGroup: {fileID: 838107136}
   m_gridLayoutGroup: {fileID: 838107129}
   m_contentSizeFitter: {fileID: 838107128}
-  m_cellViewPrefab: {fileID: 2389102330469617916, guid: 4f628151fe0db4e429e9e4e09f084ad3, type: 3}
-  m_cellSlotPrefab: {fileID: 2957789710997769554, guid: 50f1ab6b158335e4882cc388d08058e9, type: 3}
   m_delayToShiftCellsInSeconds: 0.5
 --- !u!1 &2034159560
 GameObject:

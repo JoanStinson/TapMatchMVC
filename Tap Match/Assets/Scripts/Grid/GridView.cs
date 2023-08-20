@@ -14,24 +14,24 @@ namespace JGM.Game
         [SerializeField] private CanvasGroup m_canvasGroup;
         [SerializeField] private GridLayoutGroup m_gridLayoutGroup;
         [SerializeField] private ContentSizeFitter m_contentSizeFitter;
-        [SerializeField] private CellView m_cellViewPrefab;
-        [SerializeField] private Transform m_cellSlotPrefab;
         [SerializeField] private float m_delayToShiftCellsInSeconds = 0.5f;
 
-        [Inject]
-        private IAudioService m_audioService;
+        [Inject] private IAudioService m_audioService;
+        [Inject] private GameSettings m_settings;
+        [Inject] private CellView.Factory m_cellViewFactory;
+        [Inject] private CellView.SlotFactory m_cellSlotFactory;
 
         private GridModel m_grid;
         private GridController m_controller;
         private Dictionary<Coordinate, CellView> m_cellViewInstances;
 
-        public void Initialize(GridController controller, GameSettings settings)
+        public void Initialize(GridController controller)
         {
             m_controller = controller;
-            m_grid = m_controller.BuildGrid(settings);
+            m_grid = m_controller.BuildGrid(m_settings);
             m_cellViewInstances = new Dictionary<Coordinate, CellView>();
             InstantiateCellsInsideGrid();
-            new DynamicGridLayout().SetupGridLayout(settings, m_gridLayoutGroup, m_contentSizeFitter);
+            new DynamicGridLayout().SetupGridLayout(m_settings, m_gridLayoutGroup, m_contentSizeFitter);
         }
 
         private void InstantiateCellsInsideGrid()
@@ -40,8 +40,10 @@ namespace JGM.Game
             {
                 for (int j = 0; j < m_grid.columns; j++)
                 {
-                    Instantiate(m_cellSlotPrefab, m_gridLayoutGroup.transform, false);
-                    var cellViewInstance = Instantiate(m_cellViewPrefab);
+                    var cellSlotInstance = m_cellSlotFactory.Create();
+                    cellSlotInstance.SetParent(m_gridLayoutGroup.transform, false);
+                    
+                    var cellViewInstance = m_cellViewFactory.Create();
                     var transformParent = m_gridLayoutGroup.transform.GetChild(i * m_grid.columns + j);
                     cellViewInstance.transform.SetParent(transformParent, false);
                     var cellModel = m_grid.GetCell(new Coordinate(i, j));

@@ -5,7 +5,8 @@ namespace JGM.Game
 {
     public class TopHeaderView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI m_matchesAmountText;
+        [SerializeField] 
+        private TextMeshProUGUI m_matchesAmountText;
 
         private int m_matchesAmount;
 

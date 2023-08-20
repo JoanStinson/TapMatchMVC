@@ -2,11 +2,15 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace JGM.Game
 {
     public class CellView : MonoBehaviour
     {
+        public class Factory : PlaceholderFactory<CellView> { }
+        public class SlotFactory : PlaceholderFactory<Transform> { }
+
         [SerializeField] private Image m_image;
         [SerializeField] private Button m_button;
         [SerializeField] private TextMeshProUGUI m_text;

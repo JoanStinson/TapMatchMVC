@@ -11,11 +11,11 @@ namespace JGM.Game
         [SerializeField] private Image m_fadePanelImage;
         [SerializeField] private float m_fadeDuration = 1.0f;
 
-        public void Initialize(GameSettings settings)
+        public void Initialize()
         {
             m_topHeaderView.Initialize(m_initialMatchesAmount);
             m_gridView.onCellsMatch += m_topHeaderView.IncreaseMatchesAmount;
-            m_gridView.Initialize(new GridController(), settings);
+            m_gridView.Initialize(new GridController());
             m_fadePanelImage.enabled = true;
             m_fadePanelImage.CrossFadeAlpha(0f, m_fadeDuration, false);
         }
