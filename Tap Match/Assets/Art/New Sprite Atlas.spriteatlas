@@ -32,9 +32,7 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: a2668651fe579d94ba4113db436cd015, type: 3}
-    - {fileID: 2800000, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
-    - {fileID: 2800000, guid: 4de3d300045fa3e4fad1b14cb2164783, type: 3}
+    - {fileID: 102900000, guid: 8278e156d24a85540bfb538a7f06bb18, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -42,6 +40,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 4de3d300045fa3e4fad1b14cb2164783, type: 3}
   - {fileID: 21300000, guid: a2668651fe579d94ba4113db436cd015, type: 3}
+  - {fileID: 21300000, guid: c2d37592ad20cdd4fbc7a911a67ca008, type: 3}
   - {fileID: -53843194, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
   - {fileID: -48214002, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
   - {fileID: 1061985339, guid: fa1776cf37eca7e48a70b6ab66fc23a6, type: 3}
@@ -87,6 +86,7 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Top UI
   - Background
+  - Blank Button Wide
   - Candies_Jerom_CCBYSA3_8
   - Candies_Jerom_CCBYSA3_9
   - Candies_Jerom_CCBYSA3_6

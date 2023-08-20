@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc9f3ffbf2092c46b3abee60d44281a, type: 3}
+  m_Name: Font Library
+  m_EditorClassIdentifier: 
+  m_fontEntries:
+  - fontName: FNT_CJK
+    fontAsset: {fileID: 11400000, guid: adc3fd04fda3cd743868cd2d2ef1d991, type: 2}
+  - fontName: FNT_Default
+    fontAsset: {fileID: 11400000, guid: 599c87a7d216a0246b54b566311609e4, type: 2}
+  - fontName: FNT_RU
+    fontAsset: {fileID: 11400000, guid: a1fbaa2891bb126448fa230c7a6162c9, type: 2}

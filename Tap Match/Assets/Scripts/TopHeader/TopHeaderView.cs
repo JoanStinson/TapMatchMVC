@@ -1,12 +1,19 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Zenject;
+using static JGM.Game.LocalizationService;
+using Random = UnityEngine.Random;
 
 namespace JGM.Game
 {
     public class TopHeaderView : MonoBehaviour
     {
-        [SerializeField] 
-        private TextMeshProUGUI m_movesAmountText;
+        [SerializeField] private TextMeshProUGUI m_movesAmountText;
+        [SerializeField] private Button m_languageButton;
+
+        [Inject] private ILocalizationService m_localizationService;
+        [Inject] private IAudioService m_audioService;
 
         private int m_movesAmount;
 
@@ -14,6 +21,23 @@ namespace JGM.Game
         {
             m_movesAmount = initialMovesAmount;
             m_movesAmountText.text = m_movesAmount.ToString();
+            m_languageButton.onClick.RemoveAllListeners();
+            m_languageButton.onClick.AddListener(ChangeLanguageToRandom);
+        }
+
+        private void ChangeLanguageToRandom()
+        {
+            Language currentLanguage = m_localizationService.currentLanguage;
+            Language randomLanguage;
+
+            do
+            {
+                randomLanguage = (Language)Random.Range(0, (int)Language.Count);
+            }
+            while (randomLanguage == currentLanguage);
+
+            m_localizationService.SetLanguage(randomLanguage);
+            m_audioService.Play(AudioFileNames.ButtonClickSfx);
         }
 
         public void IncreaseMovesAmount()

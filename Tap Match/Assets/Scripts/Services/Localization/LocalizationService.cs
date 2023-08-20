@@ -12,7 +12,7 @@ namespace JGM.Game
 
         private const Language m_defaultLanguage = Language.English;
         private const string m_dataFolder = "Localization/";
-        private const string m_configFilePath = "Data/localization_data";
+        private const string m_configFilePath = "Localization/Data/localization_data";
 
         private LanguageData m_currentLanguageData => m_languages[currentLanguage];
         private Dictionary<Language, LanguageData> m_languages;
