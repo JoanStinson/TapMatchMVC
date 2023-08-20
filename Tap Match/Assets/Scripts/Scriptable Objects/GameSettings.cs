@@ -18,5 +18,11 @@ namespace JGM.Game
         [SerializeField, Range(5, 20)] private int m_columns;
         [SerializeField] private float m_minCellSize = 20f;
         [SerializeField] private CellAsset[] m_cellAssets = new CellAsset[3];
+
+        public void SetRowsAndColumns(int rows, int columns)
+        {
+            m_rows = rows;
+            m_columns = columns;
+        }
     }
 }

@@ -8,5 +8,10 @@ namespace JGM.Game
 
         [SerializeField]
         private T[] m_assets;
+
+        public void SetAssets(T[] assets)
+        {
+            m_assets = assets;
+        }
     }
 }

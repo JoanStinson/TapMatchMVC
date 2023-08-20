@@ -175,5 +175,11 @@ namespace JGM.Game
                 cell.EmptyCell();
             }
         }
+
+        public void SetValues(GridModel grid, CellAsset[] cellAssets)
+        {
+            m_grid = grid;
+            m_cellAssets = cellAssets;
+        }
     }
 }

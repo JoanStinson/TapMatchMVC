@@ -9,6 +9,8 @@ namespace JGM.Game
         public Sprite sprite;
         public AnimatorOverrideController overrideController;
 
+        public CellAsset() { }
+
         public CellAsset(Sprite sprite, AnimatorOverrideController overrideController)
         {
             this.sprite = sprite;

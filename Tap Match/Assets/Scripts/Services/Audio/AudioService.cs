@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -19,12 +20,20 @@ namespace JGM.Game
 
         private void Awake()
         {
+            Initialize();
+        }
+
+        public void Initialize()
+        {
             m_pool = new ComponentPool<AudioSource>(m_maxSimultaneousAudioSources, transform);
             m_audioLibrary = new Dictionary<string, AudioClip>();
 
-            for (int i = 0; i < m_audioAssets.Assets.Length; i++)
+            if (m_audioAssets != null)
             {
-                m_audioLibrary.Add(m_audioAssets.Assets[i].name, m_audioAssets.Assets[i]);
+                foreach (var audioClip in m_audioAssets.Assets)
+                {
+                    m_audioLibrary.Add(audioClip.name, audioClip);
+                }
             }
         }
 
@@ -60,6 +69,13 @@ namespace JGM.Game
         {
             yield return new WaitForSeconds(duration);
             m_pool.Return(audioSource);
+        }
+
+        public void SetDependencies(AudioLibrary audioLibrary, ICoroutineService coroutineService, ComponentPool<AudioSource> pool)
+        {
+            m_audioAssets = audioLibrary;
+            m_coroutineService = coroutineService;
+            m_pool = pool;
         }
     }
 }

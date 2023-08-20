@@ -10,6 +10,8 @@ namespace JGM.Game
         public int type { get; private set; }
         public bool needsToAnimate { get; set; }
 
+        public CellModel() { }
+
         public CellModel(Coordinate coordinate, CellAsset cellAsset, int type)
         {
             SetValues(coordinate, cellAsset, type, true);

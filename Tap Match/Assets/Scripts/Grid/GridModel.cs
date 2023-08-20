@@ -2,10 +2,12 @@
 {
     public class GridModel
     {
-        public readonly int rows;
-        public readonly int columns;
+        public virtual int rows { get; private set; }
+        public virtual int columns { get; private set; }
 
         private readonly CellModel[,] m_grid;
+
+        public GridModel() { }
 
         public GridModel(int rows, int columns)
         {
@@ -29,7 +31,7 @@
             m_grid[coordinate.x, coordinate.y].EmptyCell();
         }
 
-        public CellModel GetCell(Coordinate coordinate)
+        public virtual CellModel GetCell(Coordinate coordinate)
         {
             return m_grid[coordinate.x, coordinate.y];
         }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace JGM.Game
 {
-    public class ComponentPool<T> where T : Component
+    public class ComponentPool<T> : IComponentPool<T> where T : Component
     {
         private readonly Stack<T> m_poolStack = new Stack<T>();
+
+        public ComponentPool() { }
 
         public ComponentPool(int poolSize, Transform poolParent)
         {
@@ -20,7 +22,7 @@ namespace JGM.Game
             }
         }
 
-        public T Get()
+        public virtual T Get()
         {
             if (m_poolStack.Count == 0)
             {
@@ -33,7 +35,7 @@ namespace JGM.Game
             return component;
         }
 
-        public void Return(T component)
+        public virtual void Return(T component)
         {
             component.gameObject.SetActive(false);
             m_poolStack.Push(component);

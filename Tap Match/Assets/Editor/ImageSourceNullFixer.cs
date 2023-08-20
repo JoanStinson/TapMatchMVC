@@ -6,13 +6,13 @@ namespace JGM.GameEditor
 {
     public class ImageSourceNullFixer : Editor
     {
-        private const string m_defaultWhiteAssetSpritePath = "Assets/Art/White.png";
+        public const string defaultWhiteAssetSpritePath = "Assets/Art/White.png";
 
         [MenuItem("Tools/UI/Fix Image Source Null &1")]
         public static void FixImageSourceNull()
         {
             var allPrefabs = UIPrefabsGetter.GetAllPrefabs();
-            var defaultImageSprite = AssetDatabase.LoadAssetAtPath<Sprite>(m_defaultWhiteAssetSpritePath);
+            var defaultImageSprite = AssetDatabase.LoadAssetAtPath<Sprite>(defaultWhiteAssetSpritePath);
 
             foreach (var prefabAsset in allPrefabs)
             {

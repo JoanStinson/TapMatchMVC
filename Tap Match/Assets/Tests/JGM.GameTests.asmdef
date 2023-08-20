@@ -4,7 +4,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "JGM.Game"
+        "JGM.Game",
+        "JGM.GameEditor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
