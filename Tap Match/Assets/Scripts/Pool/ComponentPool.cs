@@ -11,8 +11,8 @@ namespace JGM.Game
             m_pool = new T[poolSize];
             for (int i = 0; i < poolSize; ++i)
             {
-                //TODO use conditional for this
-                var pooledGO = new GameObject($"Pooled {typeof(T)} {i + 1}");
+                var pooledGO = new GameObject();
+                pooledGO.SetName($"Pooled {typeof(T)} {i + 1}");
                 pooledGO.transform.SetParent(poolParent);
                 pooledGO.SetActive(false);
                 var pooledComponent = pooledGO.AddComponent<T>();
