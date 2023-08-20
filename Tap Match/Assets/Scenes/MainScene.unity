@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.775024, y: -198.73}
+  m_AnchoredPosition: {x: 52.774902, y: -198.73}
   m_SizeDelta: {x: 264.6643, y: 77.3444}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &35596378
@@ -1295,7 +1295,7 @@ GameObject:
   - component: {fileID: 1039624800}
   - component: {fileID: 1039624799}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1641,6 +1641,7 @@ MonoBehaviour:
   m_contentSizeFitter: {fileID: 838107128}
   m_cellViewPrefab: {fileID: 2389102330469617916, guid: 4f628151fe0db4e429e9e4e09f084ad3, type: 3}
   m_cellSlotPrefab: {fileID: 2957789710997769554, guid: 50f1ab6b158335e4882cc388d08058e9, type: 3}
+  m_delayToShiftCellsInSeconds: 0.5
   m_popSfx: {fileID: 838107135}
 --- !u!1 &2034159560
 GameObject:
