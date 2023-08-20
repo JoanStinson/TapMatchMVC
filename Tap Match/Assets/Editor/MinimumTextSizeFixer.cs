@@ -7,7 +7,7 @@ namespace JGM.GameEditor
     [InitializeOnLoad]
     public class MinimumTextSizeFixer : Editor
     {
-        private const int MinimumTextSize = 22;
+        private const int MinimumTextSize = 16;
 
         [MenuItem("Tools/UI/Fix Minimum Text Size &2")]
         public static void FixMinimumTextSize()
