@@ -6,6 +6,8 @@ namespace JGM.GameEditor
     [CustomEditor(typeof(MonoBehaviour), true)]
     public class NotNullInspector : Editor
     {
+        private bool errorMessagePrinted = false;
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -32,9 +34,10 @@ namespace JGM.GameEditor
                         hasSerializeFieldAttribute = field.GetCustomAttributes(typeof(SerializeField), true).Length > 0;
                     }
 
-                    if (hasSerializeFieldAttribute)
+                    if (hasSerializeFieldAttribute && !errorMessagePrinted)
                     {
                         Debug.LogError($"{script.gameObject.name}: {property.name} is null or unassigned!", script.gameObject);
+                        errorMessagePrinted = true;
                     }
                 }
             }
