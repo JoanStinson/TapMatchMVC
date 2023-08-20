@@ -10,7 +10,6 @@ namespace JGM.Game
         public override void InstallBindings()
         {
             Container.Bind<IAudioService>().FromInstance(m_audioServiceInstance);
-
         }
     }
 }

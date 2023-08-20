@@ -2,18 +2,16 @@
 {
     public class GridModel
     {
-        public int rows => m_rows;
-        public int columns => m_columns;
+        public readonly int rows;
+        public readonly int columns;
 
         private readonly CellModel[,] m_grid;
-        private readonly int m_rows;
-        private readonly int m_columns;
 
         public GridModel(int rows, int columns)
         {
+            this.rows = rows;
+            this.columns = columns;
             m_grid = new CellModel[rows, columns];
-            m_rows = rows;
-            m_columns = columns;
         }
 
         public void InitCell(Coordinate coordinate, CellAsset cellAsset, int type)

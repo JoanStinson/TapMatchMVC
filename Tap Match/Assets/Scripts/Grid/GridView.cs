@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace JGM.Game
 {
@@ -16,7 +17,9 @@ namespace JGM.Game
         [SerializeField] private CellView m_cellViewPrefab;
         [SerializeField] private Transform m_cellSlotPrefab;
         [SerializeField] private float m_delayToShiftCellsInSeconds = 0.5f;
-        [SerializeField] private AudioSource m_popSfx;
+
+        [Inject]
+        private IAudioService m_audioService;
 
         private GridModel m_grid;
         private GridController m_controller;
@@ -55,11 +58,12 @@ namespace JGM.Game
             if (!m_controller.EmptyConnectedCells(cell, out var connectedCells))
             {
                 m_canvasGroup.blocksRaycasts = true;
+                m_audioService.Play(AudioFileNames.CannotPopSfx);
                 return;
             }
 
             onCellsMatch?.Invoke();
-            m_popSfx.Play();
+            m_audioService.Play(AudioFileNames.PopSfx);
             RefreshConnectedCellsInGrid(connectedCells);
             await Task.Delay(TimeSpan.FromSeconds(m_delayToShiftCellsInSeconds));
             m_controller.ShiftCellsDownwardsAndFillEmptySlots();

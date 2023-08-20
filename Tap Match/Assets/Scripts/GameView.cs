@@ -7,12 +7,13 @@ namespace JGM.Game
     {
         [SerializeField] private TopHeaderView m_topHeaderView;
         [SerializeField] private GridView m_gridView;
+        [SerializeField] private int m_initialMatchesAmount = 0;
         [SerializeField] private Image m_fadePanelImage;
         [SerializeField] private float m_fadeDuration = 1.0f;
 
         public void Initialize(GameSettings settings)
         {
-            m_topHeaderView.Initialize(0);
+            m_topHeaderView.Initialize(m_initialMatchesAmount);
             m_gridView.onCellsMatch += m_topHeaderView.IncreaseMatchesAmount;
             m_gridView.Initialize(new GridController(), settings);
             m_fadePanelImage.enabled = true;

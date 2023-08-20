@@ -18,7 +18,7 @@ namespace JGM.Game
             float totalHeight = totalCellHeight + layout.padding.top + layout.padding.bottom;
             bool cellsOverflowLayoutHeight = totalHeight > (layout.transform as RectTransform).rect.height;
 
-            // If the content size fitter cannot expand height because of overflow recalculate cell size
+            // If the content size fitter cannot expand height because of overflow, recalculate cell size
             if (cellsOverflowLayoutHeight)
             {
                 fitter.verticalFit = ContentSizeFitter.FitMode.Unconstrained;

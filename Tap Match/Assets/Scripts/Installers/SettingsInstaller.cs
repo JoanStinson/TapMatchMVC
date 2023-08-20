@@ -6,11 +6,11 @@ namespace JGM.Game
     [CreateAssetMenu(fileName = "New Settings Installer", menuName = "Installers/Settings Installer")]
     public class SettingsInstaller : ScriptableObjectInstaller<SettingsInstaller>
     {
-        [SerializeField] private AudioLibrary _audioLibraryInstance;
+        [SerializeField] private AudioLibrary m_audioLibraryInstance;
 
         public override void InstallBindings()
         {
-            Container.Bind<AudioLibrary>().FromInstance(_audioLibraryInstance);
+            Container.Bind<AudioLibrary>().FromInstance(m_audioLibraryInstance);
         }
     }
 }

@@ -36,14 +36,14 @@ namespace JGM.Game
                 foreach (var connectedCell in connectedCells)
                 {
                     connectedCell.EmptyCell();
-                    connectedCell.coordinate.isVisited = false;
+                    connectedCell.coordinate.visited = false;
                 }
                 return true;
             }
 
             if (connectedCells.Count > 0)
             {
-                connectedCells[0].coordinate.isVisited = false;
+                connectedCells[0].coordinate.visited = false;
             }
             return false;
         }
@@ -57,12 +57,12 @@ namespace JGM.Game
 
             var cell = m_grid.GetCell(coordinate);
 
-            if (cell.type != targetType || cell.coordinate.isVisited)
+            if (cell.type != targetType || cell.coordinate.visited)
             {
                 return;
             }
 
-            cell.coordinate.isVisited = true;
+            cell.coordinate.visited = true;
             connectedCells.Add(cell);
 
             var neighbors = new[]
