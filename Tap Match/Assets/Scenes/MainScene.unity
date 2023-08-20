@@ -700,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_topHeaderView: {fileID: 2051929590}
   m_gridView: {fileID: 1298838987}
+  m_initialMatchesAmount: 0
   m_fadePanelImage: {fileID: 2077270559}
   m_fadeDuration: 1
 --- !u!1 &838107126
@@ -1369,7 +1370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers:
-  - {fileID: 11400000, guid: 85a31fda4fd9f7e489d1ffda5cb7141b, type: 2}
+  - {fileID: 11400000, guid: 035881e94cc2ae24e838fa1b1452cc16, type: 2}
   _monoInstallers:
   - {fileID: 1234209148}
   _installerPrefabs: []
@@ -1541,7 +1542,6 @@ MonoBehaviour:
   m_cellViewPrefab: {fileID: 2389102330469617916, guid: 4f628151fe0db4e429e9e4e09f084ad3, type: 3}
   m_cellSlotPrefab: {fileID: 2957789710997769554, guid: 50f1ab6b158335e4882cc388d08058e9, type: 3}
   m_delayToShiftCellsInSeconds: 0.5
-  m_popSfx: {fileID: 0}
 --- !u!1 &2034159560
 GameObject:
   m_ObjectHideFlags: 0

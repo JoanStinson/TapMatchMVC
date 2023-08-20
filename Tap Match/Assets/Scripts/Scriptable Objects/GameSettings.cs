@@ -3,7 +3,7 @@
 namespace JGM.Game
 {
     [CreateAssetMenu(fileName = "New Game Settings", menuName = "Game Settings", order = 0)]
-    public partial class GameSettings : ScriptableObject
+    public class GameSettings : ScriptableObject
     {
         public int rows => m_rows;
         public int columns => m_columns;

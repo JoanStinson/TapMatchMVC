@@ -3,7 +3,7 @@ using Zenject;
 
 namespace JGM.Game
 {
-    public class MainSceneInstaller : MonoInstaller
+    public class MainSceneMonoInstaller : MonoInstaller
     {
         [SerializeField] private AudioService m_audioServiceInstance;
 
